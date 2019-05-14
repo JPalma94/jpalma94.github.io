@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chatbot de Apoio ao Cliente NOS</title>
+    <script src="https://cdn.botframework.com/botframework-webchat/master/webchat.js"></script>
+    <style>
+      html, body { height: 100% }
+      body { margin: 0 }
+
+      #webchat {
+        height: 100%;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="webchat" role="main"></div>
+    <script src="https://cdn.botframework.com/botframework-webchat/latest/webchat.js"></script>
+    <script>
+      (async function () {
+
+        window.WebChat.renderWebChat({
+          // caso o token nao de, ir a (azure web app bot -> channels -> configure direct line) buscar
+          directLine: window.WebChat.createDirectLine({ token: 'ASr7rpWWuOM.zGP5-hPcd482Lb1ArV8byWz3G0S7GK1voDzDJSQ7XBU' }),
+          // https://w3c.github.io/speech-api/ - Web Speech API
+          webSpeechPonyfillFactory: window.WebChat.createBrowserWebSpeechPonyfillFactory(),
+          userID: 'YOUR_USER_ID',
+          username: 'Web Chat User',
+          locale: 'pt-PT',
+          botAvatarInitials: 'BOT',
+          userAvatarInitials: 'U'
+        }, document.getElementById('webchat'));
+
+        document.querySelector('#webchat > *').focus();
+
+      })().catch(err => console.error(err));
+
+
+    </script>
+  </body>
+</html>
+
+
+
+
+
+<!-- https://github.com/Microsoft/BotFramework-WebChat/tree/master/samples/06.d.speech-web-browser ->
