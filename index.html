@@ -46,7 +46,7 @@
         microphoneButtonColorOnDictate: 'red'
       };
 
-      // var speech = window.WebChat.createBrowserWebSpeechPonyfillFactory();
+      var speech = window.WebChat.createBrowserWebSpeechPonyfillFactory();
 
       (async function () {
 
@@ -54,7 +54,7 @@
           // caso o token nao de, ir a (azure web app bot -> channels -> configure direct line) buscar
           directLine: window.WebChat.createDirectLine({ token: 'ASr7rpWWuOM.zGP5-hPcd482Lb1ArV8byWz3G0S7GK1voDzDJSQ7XBU' }),
           // https://w3c.github.io/speech-api/ - Web Speech API
-          webSpeechPonyfillFactory: window.WebChat.createBrowserWebSpeechPonyfillFactory(),
+          webSpeechPonyfillFactory: speech,
           userID: 'YOUR_USER_ID',
           username: 'Cliente',
           locale: 'pt-PT',
