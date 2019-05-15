@@ -47,6 +47,9 @@
       };
 
       var speech = window.WebChat.createBrowserWebSpeechPonyfillFactory();
+      // speech.SpeechRecognition.continuous = true;
+      speech.SpeechSynthesisUtterance.volume = 0;
+
 
       (async function () {
 
@@ -65,7 +68,35 @@
 
       })().catch(err => console.error(err));
 
+      /*
+
+      export default function () {
+  if (!window.SpeechRecognition && !window.webkitSpeechRecognition) {
+    console.warn('Web Chat: This browser does not support Web Speech API Speech Recognition.');
+  }
+
+  if (!window.speechSynthesis) {
+    console.warn('Web Chat: This browser does not support Web Speech API Speech Synthesis.');
+  }
+
+  return () => ({
+    SpeechGrammarList: window.SpeechGrammarList || window.webkitSpeechGrammarList,
+    SpeechRecognition: window.SpeechRecognition || window.webkitSpeechRecognition,
+    speechSynthesis: window.speechSynthesis,
+    SpeechSynthesisUtterance: window.SpeechSynthesisUtterance
+  });
+}
+
+
+
+      */
+
 
     </script>
   </body>
 </html>
+
+
+
+
+
