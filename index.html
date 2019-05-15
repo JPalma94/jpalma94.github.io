@@ -8,7 +8,7 @@
       html, body { height: 100% }
       body { 
       	margin: 0; 
-      	background-color: paleturquoise;
+      	background-color: white;
       }
 
       #webchat {
@@ -21,6 +21,26 @@
     <div id="webchat" role="main"></div>
     <script src="https://cdn.botframework.com/botframework-webchat/latest/webchat.js"></script>
     <script>
+      const styleOptions = {
+        bubbleBackground: 'lightcyan',
+        bubbleFromUserBackground: 'white',
+
+        bubbleBorderRadius: 10,
+        bubbleBorder: 'solid 1px #E6E6E6',
+
+        bubbleFromUserBorderRadius: 10,
+        bubbleFromUserBorder: 'solid 1px #E6E6E6',
+
+        rootHeight: '100%', // 50%
+        rootWidth: '100%',
+
+        // userAvatarInitials: 'YOU',
+        // botAvatarInitials: 'NOS',
+
+        botAvatarImage: 'https://raw.githubusercontent.com/JPalma94/jpalma94.github.io/master/bot5.png',
+		userAvatarImage: 'https://raw.githubusercontent.com/JPalma94/jpalma94.github.io/master/user10.png'
+      };
+
       (async function () {
 
         window.WebChat.renderWebChat({
@@ -31,16 +51,7 @@
           userID: 'YOUR_USER_ID',
           username: 'Cliente',
           locale: 'pt-PT',
-          // botAvatarInitials: 'BOT',
-          userAvatarInitials: 'U',
-          userAvatarImage: 'https://github.com/compulim.png?size=64',
-          // dividir ecra
-          styleOptions: {
-          	rootHeight: '50%',
-          	rootWidth: '100%'
-          }
-
-
+          styleOptions
         }, document.getElementById('webchat'));
 
         document.querySelector('#webchat > *').focus();
