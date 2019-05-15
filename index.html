@@ -2,11 +2,15 @@
 <html lang="pt-PT">
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Chatbot de Apoio ao Cliente NOS!!!!!!!!!!!!!!</title>
+    <title>Chatbot de Apoio ao Cliente NOS</title>
+    <header>!!!!!!!!!!!!!!!!!!!!!!</header>
     <script src="https://cdn.botframework.com/botframework-webchat/master/webchat.js"></script>
     <style>
       html, body { height: 100% }
-      body { margin: 0 }
+      body { 
+      	margin: 0; 
+      	background-color: paleturquoise;
+      }
 
       #webchat {
         height: 100%;
@@ -26,7 +30,7 @@
           // https://w3c.github.io/speech-api/ - Web Speech API
           webSpeechPonyfillFactory: window.WebChat.createBrowserWebSpeechPonyfillFactory(),
           userID: 'YOUR_USER_ID',
-          username: 'Web Chat User',
+          username: 'Cliente',
           locale: 'pt-PT',
           botAvatarInitials: 'BOT',
           userAvatarInitials: 'U'
