@@ -3,7 +3,6 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Chatbot de Apoio ao Cliente NOS</title>
-    <script src="https://cdn.botframework.com/botframework-webchat/master/webchat.js"></script>
     <style>
       html, body { height: 100% }
       body { 
@@ -19,7 +18,8 @@
   </head>
   <body>
     <div id="webchat" role="main"></div>
-    <script src="https://cdn.botframework.com/botframework-webchat/latest/webchat.js"></script>
+    <script src="https://cdn.botframework.com/botframework-webchat/latest/webchat.js"></script> 
+    <!-- <script src="https://github.com/JPalma94/jpalma94.github.io/blob/master/webchat.js"></script> -->
     <script>
       const styleOptions = {
         bubbleBackground: '#f7f4f4',
@@ -43,8 +43,10 @@
 
         hideUploadButton: true,
 
-        microphoneButtonColorOnDictate: 'red',
+        microphoneButtonColorOnDictate: 'red'
       };
+
+      // var speech = window.WebChat.createBrowserWebSpeechPonyfillFactory();
 
       (async function () {
 
@@ -67,11 +69,3 @@
     </script>
   </body>
 </html>
-
-
-
-
-
-<!-- https://github.com/Microsoft/BotFramework-WebChat/tree/master/samples/06.d.speech-web-browser ->
-
-	Updates were rejected because the tip of your current branch is behind its remote counterpart. Integrate the remote changes (e.g.'git pull ...') before pushing again.
