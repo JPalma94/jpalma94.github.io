@@ -48,7 +48,7 @@
 
 
     (async function () {
-/*
+
 		// https://github.com/microsoft/BotFramework-WebChat/blob/master/samples/11.customization-redux-actions/index.html
     	const store = window.WebChat.createStore(
     		{},
@@ -64,7 +64,7 @@
                 // alert(JSON.stringify(activity, null, 2));
 
                 var synth = window.speechSynthesis;
-                var utterThis =  new SpeechSynthesisUtterance(activity.text);
+                var utterThis =  new SpeechSynthesisUtterance('Bom dia, sou de Portugal.');
                 utterThis.lang = "pt-PT";
                 synth.speak(utterThis);
               }
@@ -72,7 +72,7 @@
             return next(action);
           }
     	);
-*/
+
 
     	window.WebChat.renderWebChat({
           // caso o token nao de, ir a (azure web app bot -> channels -> configure direct line) buscar
@@ -81,12 +81,12 @@
 
           // a tentar por speechrecognition.continuous = true para ver se resolve a cena de continuar sempre a pedir para falar
 
-          webSpeechPonyfillFactory: window.WebChat.createBrowserWebSpeechPonyfillFactory(),
+          //webSpeechPonyfillFactory: window.WebChat.createBrowserWebSpeechPonyfillFactory(),
           userID: 'YOUR_USER_ID',
           username: 'Cliente',
-          locale: 'pt-BR',
+          locale: 'pt-PT',
           styleOptions,
-          //store
+          store
       }, document.getElementById('webchat'));
 
 
