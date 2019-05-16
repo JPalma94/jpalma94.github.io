@@ -69,15 +69,13 @@
 
                 
                 var synth = window.speechSynthesis;
-                var utterThis =  new SpeechSynthesisUtterance('Bom dia, sou de Portugal.');
-                utterThis.lang = "pt-PT";
                 var voices = synth.getVoices();
-                console.log(voices[29]);
-                console.log(voices[30]);
-                console.log(voices[31]);
-                /*for(var i = 0; i < voices.length; i++) {
-                	console.log("Voices na posicao " + i + voices[i]);
-                }*/
+
+                var utterThis =  new SpeechSynthesisUtterance('Bom dia, sou de Portugal.');
+                utterThis.voice = voices[29];
+                utterThis.lang = voices[29].lang;
+                // voices[29] - pt-PT no android!
+         
                 synth.speak(utterThis); 
                 
               }
