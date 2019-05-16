@@ -71,9 +71,9 @@
                 var voices = synth.getVoices();
 
                 var utterThis =  new SpeechSynthesisUtterance('Bom dia, sou de Portugal.');
-                utterThis.voice = voices[29];
+                utterThis.voice = voices[28];
                 console.log(utterThis.voice);
-                utterThis.lang = voices[29].lang;
+                utterThis.lang = voices[28].lang;
                 console.log(utterThis.lang);
                 // voices[29] - pt-PT no android!
                 
@@ -82,7 +82,7 @@
                 	console.log("Voices na posicao " + i + voices[i]);
                 }*/
                 synth.speak(utterThis); 
-                
+
                 
               }
             }
