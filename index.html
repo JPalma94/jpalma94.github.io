@@ -59,14 +59,24 @@
             } else if (action.type === 'DIRECT_LINE/INCOMING_ACTIVITY') {
               // When receiving an activity of type "event" with name of "sample:backchannel", prompt it out.
               const { activity } = action.payload;
-              console.log(activity);
+              
+              //console.log(window.speechSynthesis);
+              //console.log(new SpeechSynthesisUtterance);
+              //console.log(window.webkitSpeechRecognition);
+
               if (activity.type === 'message') {
                 // alert(JSON.stringify(activity, null, 2));
 
+                
                 var synth = window.speechSynthesis;
                 var utterThis =  new SpeechSynthesisUtterance('Bom dia, sou de Portugal.');
                 utterThis.lang = "pt-PT";
-                synth.speak(utterThis);
+                var voices = synth.getVoices();
+                for(var i = 0; i < voices.length; i++) {
+                	console.log(voices[i]);
+                }
+                synth.speak(utterThis); 
+                
               }
             }
             return next(action);
