@@ -55,7 +55,7 @@
     		({ dispatch }) => next => action => {
             if (action.type === 'DIRECT_LINE/CONNECT_FULFILLED') {
               // After connected, we will send a message by dispatching a Redux action.
-              dispatch({ type: 'WEB_CHAT/SEND_MESSAGE', payload: { text: 'sample:backchannel' } });
+              // dispatch({ type: 'WEB_CHAT/SEND_MESSAGE', payload: { text: 'sample:backchannel' } });
             } else if (action.type === 'DIRECT_LINE/INCOMING_ACTIVITY') {
               // When receiving an activity of type "event" with name of "sample:backchannel", prompt it out.
               const { activity } = action.payload;
