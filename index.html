@@ -1,35 +1,35 @@
 <!DOCTYPE html>
 <html lang="pt-PT">
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Chatbot de Apoio ao Cliente NOS</title>
-    <style>
-      html, body { height: 100% }
-      body { 
-      	margin: 0; 
-      	background-color: white;
-      }
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Chatbot de Apoio ao Cliente NOS</title>
+	<style>
+	html, body { height: 100% }
+	body { 
+		margin: 0; 
+		background-color: white;
+	}
 
-      #webchat {
-        height: 100%;
-        width: 100%;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="webchat" role="main"></div>
-    <script src="https://cdn.botframework.com/botframework-webchat/latest/webchat.js"></script> 
-    <!-- <script src="https://github.com/JPalma94/jpalma94.github.io/blob/master/webchat.js"></script> -->
-    <script>
-      const styleOptions = {
-        bubbleBackground: '#f7f4f4',
-        bubbleFromUserBackground: 'white',
+	#webchat {
+		height: 100%;
+		width: 100%;
+	}
+</style>
+</head>
+<body>
+	<div id="webchat" role="main"></div>
+	<script src="https://cdn.botframework.com/botframework-webchat/latest/webchat.js"></script> 
+	<!-- <script src="https://github.com/JPalma94/jpalma94.github.io/blob/master/webchat.js"></script> -->
+	<script>
+		const styleOptions = {
+			bubbleBackground: '#f7f4f4',
+			bubbleFromUserBackground: 'white',
 
-        bubbleBorderRadius: 10,
-        bubbleBorder: 'solid 0.5px #000000',
+			bubbleBorderRadius: 10,
+			bubbleBorder: 'solid 0.5px #000000',
 
-        bubbleFromUserBorderRadius: 10,
-        bubbleFromUserBorder: 'solid 0.5px #000000',
+			bubbleFromUserBorderRadius: 10,
+			bubbleFromUserBorder: 'solid 0.5px #000000',
 
         rootHeight: '100%', // 50%
         rootWidth: '100%',
@@ -44,60 +44,59 @@
         hideUploadButton: true,
 
         microphoneButtonColorOnDictate: 'red'
-      };
+    };
 
 
-      (async function () {
+    (async function () {
 
-        window.WebChat.renderWebChat({
+    	window.WebChat.renderWebChat({
           // caso o token nao de, ir a (azure web app bot -> channels -> configure direct line) buscar
           directLine: window.WebChat.createDirectLine({ token: 'ASr7rpWWuOM.zGP5-hPcd482Lb1ArV8byWz3G0S7GK1voDzDJSQ7XBU' }),
           // https://w3c.github.io/speech-api/ - Web Speech API
 
           // a tentar por speechrecognition.continuous = true para ver se resolve a cena de continuar sempre a pedir para falar
 
-          //webSpeechPonyfillFactory: window.WebChat.createBrowserWebSpeechPonyfillFactory({
-          //	SpeechSynthesisUtterance.volume: 0
-
-          //}),
-          webSpeechPonyfillFactory: window.WebChat.createBrowserWebSpeechPonyfillFactory(),
+          webSpeechPonyfillFactory: f(),
+          // webSpeechPonyfillFactory: window.WebChat.createBrowserWebSpeechPonyfillFactory(),
           userID: 'YOUR_USER_ID',
           username: 'Cliente',
           locale: 'pt-PT',
           styleOptions
-        }, document.getElementById('webchat'));
+      }, document.getElementById('webchat'));
 
-        document.querySelector('#webchat > *').focus();
+    	document.querySelector('#webchat > *').focus();
 
-      })().catch(err => console.error(err));
-
-      /*
-
-      export default function () {
-  if (!window.SpeechRecognition && !window.webkitSpeechRecognition) {
-    console.warn('Web Chat: This browser does not support Web Speech API Speech Recognition.');
-  }
-
-  if (!window.speechSynthesis) {
-    console.warn('Web Chat: This browser does not support Web Speech API Speech Synthesis.');
-  }
-
-  return () => ({
-    SpeechGrammarList: window.SpeechGrammarList || window.webkitSpeechGrammarList,
-    SpeechRecognition: window.SpeechRecognition || window.webkitSpeechRecognition,
-    speechSynthesis: window.speechSynthesis,
-    SpeechSynthesisUtterance: window.SpeechSynthesisUtterance
-  });
-}
+    })().catch(err => console.error(err));
 
 
 
-      */
+      
+
+    function f () {
+    	if (!window.SpeechRecognition && !window.webkitSpeechRecognition) {
+    		console.warn('Web Chat: This browser does not support Web Speech API Speech Recognition.');
+    	}
+
+    	if (!window.speechSynthesis) {
+    		console.warn('Web Chat: This browser does not support Web Speech API Speech Synthesis.');
+    	}
+
+    	window.SpeechRecognition.continuous = true;
+    	window.SpeechRecognition.lang = "en-US";
+
+    	return () => ({
+    		SpeechGrammarList: window.SpeechGrammarList || window.webkitSpeechGrammarList,
+    		SpeechRecognition: window.SpeechRecognition || window.webkitSpeechRecognition,
+    		speechSynthesis: window.speechSynthesis,
+    		SpeechSynthesisUtterance: window.SpeechSynthesisUtterance
+    	});
+    }
 
 
 
-    </script>
-  </body>
+
+</script>
+</body>
 </html>
 
 
