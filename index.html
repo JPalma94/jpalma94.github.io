@@ -31,23 +31,48 @@
 			bubbleFromUserBorderRadius: 10,
 			bubbleFromUserBorder: 'solid 0.5px #000000',
 
-        rootHeight: '100%', // 50%
-        rootWidth: '100%',
+	        rootHeight: '100%', // 50%
+	        rootWidth: '100%',
 
-        // userAvatarInitials: 'YOU',
-        // botAvatarInitials: 'NOS',
+	        // userAvatarInitials: 'YOU',
+	        // botAvatarInitials: 'NOS',
 
-        //avatarSize: 50,
-        botAvatarImage: 'https://raw.githubusercontent.com/JPalma94/jpalma94.github.io/master/nos1.png',
-        userAvatarImage: 'https://raw.githubusercontent.com/JPalma94/jpalma94.github.io/master/user12.png',
+	        //avatarSize: 50,
+	        botAvatarImage: 'https://raw.githubusercontent.com/JPalma94/jpalma94.github.io/master/nos1.png',
+	        userAvatarImage: 'https://raw.githubusercontent.com/JPalma94/jpalma94.github.io/master/user12.png',
 
-        hideUploadButton: true,
+	        hideUploadButton: true,
 
-        microphoneButtonColorOnDictate: 'red'
-    };
+	        microphoneButtonColorOnDictate: 'red'
+    	};
 
 
     (async function () {
+
+		// https://github.com/microsoft/BotFramework-WebChat/blob/master/samples/11.customization-redux-actions/index.html
+    	const store = window.WebChat.createStore(
+    		{},
+    		({ dispatch }) => next => action => {
+            if (action.type === 'DIRECT_LINE/CONNECT_FULFILLED') {
+              // After connected, we will send a message by dispatching a Redux action.
+              dispatch({ type: 'WEB_CHAT/SEND_MESSAGE', payload: { text: 'sample:backchannel' } });
+            } else if (action.type === 'DIRECT_LINE/INCOMING_ACTIVITY') {
+              // When receiving an activity of type "event" with name of "sample:backchannel", prompt it out.
+              const { activity } = action.payload;
+              console.log(activity);
+              if (activity.type === 'message' /* && activity.name === 'sample:backchannel'*/) {
+                // alert(JSON.stringify(activity, null, 2));
+
+                var synth = window.speechSynthesis;
+                var utterThis =  new SpeechSynthesisUtterance(activity.text);
+                utterThis.lang = "pt-PT";
+                synth.speak(utterThis);
+              }
+            }
+            return next(action);
+          }
+    	);
+
 
     	window.WebChat.renderWebChat({
           // caso o token nao de, ir a (azure web app bot -> channels -> configure direct line) buscar
@@ -56,41 +81,18 @@
 
           // a tentar por speechrecognition.continuous = true para ver se resolve a cena de continuar sempre a pedir para falar
 
-          webSpeechPonyfillFactory: f(),
-          // webSpeechPonyfillFactory: window.WebChat.createBrowserWebSpeechPonyfillFactory(),
+          //webSpeechPonyfillFactory: window.WebChat.createBrowserWebSpeechPonyfillFactory(),
           userID: 'YOUR_USER_ID',
           username: 'Cliente',
           locale: 'pt-PT',
-          styleOptions
+          styleOptions,
+          store
       }, document.getElementById('webchat'));
+
 
     	document.querySelector('#webchat > *').focus();
 
     })().catch(err => console.error(err));
-
-
-
-      
-
-    function f () {
-    	if (!window.SpeechRecognition && !window.webkitSpeechRecognition) {
-    		console.warn('Web Chat: This browser does not support Web Speech API Speech Recognition.');
-    	}
-
-    	if (!window.speechSynthesis) {
-    		console.warn('Web Chat: This browser does not support Web Speech API Speech Synthesis.');
-    	}
-
-    	window.SpeechRecognition.continuous = true;
-    	window.SpeechRecognition.lang = "en-US";
-
-    	return () => ({
-    		SpeechGrammarList: window.SpeechGrammarList || window.webkitSpeechGrammarList,
-    		SpeechRecognition: window.SpeechRecognition || window.webkitSpeechRecognition,
-    		speechSynthesis: window.speechSynthesis,
-    		SpeechSynthesisUtterance: window.SpeechSynthesisUtterance
-    	});
-    }
 
 
 
