@@ -73,24 +73,9 @@
 
                 // https://stackoverflow.com/questions/36485170/speechsynthesis-not-working-to-speak-in-portuguese-pt-br
 
-                var utterThis =  new SpeechSynthesisUtterance('Olá, tudo bem "boas" bom dia.');
-                //utterThis.voiceURI = voices[30];
-                //utterThis.voiceURI = 'Google português de Portugal';
-                //utterThis.voice = voices[29];
-                //console.log(utterThis.voice);
-                //console.log(utterThis.voiceURI);
-                //utterThis.lang = voices[29];
-                //console.log(utterThis.lang);
+                var utterThis =  new SpeechSynthesisUtterance(activity.text);
+               
 
-                //TENTAR
-                // utterThis.localService = true;
-
-                // voices[29] - pt-PT no android!
-                
-
-                for(var i = 0; i < voices.length; i++) {
-                	console.log("Voices na posicao " + i + voices[i]);
-                }
                 synth.speak(utterThis); 
 
                 
@@ -121,7 +106,28 @@
 
     })().catch(err => console.error(err));
 
+/*
 
+ //utterThis.voiceURI = voices[30];
+                //utterThis.voiceURI = 'Google português de Portugal';
+                //utterThis.voice = voices[29];
+                //console.log(utterThis.voice);
+                //console.log(utterThis.voiceURI);
+                //utterThis.lang = voices[29];
+                //console.log(utterThis.lang);
+
+                //TENTAR
+                // utterThis.localService = true;
+
+                // voices[29] - pt-PT no android!
+
+
+                for(var i = 0; i < voices.length; i++) {
+                	console.log("Voices na posicao " + i + voices[i]);
+                }
+
+
+*/
 
 
 </script>
