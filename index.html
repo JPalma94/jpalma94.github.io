@@ -75,22 +75,22 @@
 
                 var utterThis =  new SpeechSynthesisUtterance('Olá, tudo bem "boas" bom dia.');
                 //utterThis.voiceURI = voices[30];
-                utterThis.voiceURI = 'Google português de Portugal';
-                utterThis.voice = voices[29];
-                console.log(utterThis.voice);
-                console.log(utterThis.voiceURI);
-                utterThis.lang = voices[29];
-                console.log(utterThis.lang);
+                //utterThis.voiceURI = 'Google português de Portugal';
+                //utterThis.voice = voices[29];
+                //console.log(utterThis.voice);
+                //console.log(utterThis.voiceURI);
+                //utterThis.lang = voices[29];
+                //console.log(utterThis.lang);
 
                 //TENTAR
-                utterThis.localService = true;
+                // utterThis.localService = true;
 
                 // voices[29] - pt-PT no android!
                 
 
-                /*for(var i = 0; i < voices.length; i++) {
+                for(var i = 0; i < voices.length; i++) {
                 	console.log("Voices na posicao " + i + voices[i]);
-                }*/
+                }
                 synth.speak(utterThis); 
 
                 
