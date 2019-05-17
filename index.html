@@ -70,11 +70,19 @@
                 var synth = window.speechSynthesis;
                 var voices = synth.getVoices();
 
+
+                // https://stackoverflow.com/questions/36485170/speechsynthesis-not-working-to-speak-in-portuguese-pt-br
+
                 var utterThis =  new SpeechSynthesisUtterance(activity.text);
-                utterThis.voice = voices[30];
+                //utterThis.voiceURI = voices[30];
+                utterThis.voiceURI = 'Google português de Portugal';
                 console.log(utterThis.voice);
-                utterThis.lang = voices[30].lang;
+                utterThis.lang = voices[29].lang;
                 console.log(utterThis.lang);
+
+                //TENTAR
+                utterThis.localService = true;
+
                 // voices[29] - pt-PT no android!
                 
 
