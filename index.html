@@ -59,16 +59,14 @@
             } else if (action.type === 'DIRECT_LINE/INCOMING_ACTIVITY') {
               // When receiving an activity of type "event" with name of "sample:backchannel", prompt it out.
               const { activity } = action.payload;
-              
-              //console.log(window.speechSynthesis);
-              //console.log(new SpeechSynthesisUtterance);
-              //console.log(window.webkitSpeechRecognition);
 
               if (activity.type === 'message' && activity.from.id === 'nosapoiobot') {
                 // alert(JSON.stringify(activity, null, 2));
 
                 var synth = window.speechSynthesis;
                 var voices = synth.getVoices();
+
+                console.log(activity.text);
 
 
                 var utterThis =  new SpeechSynthesisUtterance(activity.text);
