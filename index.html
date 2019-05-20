@@ -66,6 +66,8 @@
                 var synth = window.speechSynthesis;
                 var voices = synth.getVoices();
 
+                console.log(activity);
+                console.log(activity.name);
                 console.log(activity.text);
 
 
@@ -79,6 +81,12 @@
             return next(action);
           }
     	);
+
+    	function parseBotMessage(original) {
+    		for(int i = 0; i < original.length; i++) {
+    			//quando se encontrar (htt) cortar ate )
+    		}
+    	}
 
 
     	window.WebChat.renderWebChat({
