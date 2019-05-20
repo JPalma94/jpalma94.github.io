@@ -68,7 +68,7 @@
     			}
     		}
 
-    		if(foundULR == false) {
+    		if(foundURL == false) {
     			return;
     		}
 
@@ -102,9 +102,9 @@
                 console.log(activity.text);
 
 
-                var utterThis =  new SpeechSynthesisUtterance(activity.text);
+                var utterThis =  new SpeechSynthesisUtterance(removeURL(activity.text));
 
-                synth.speak(removeURL(utterThis)); 
+                synth.speak(utterThis); 
 
                 
               }
