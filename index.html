@@ -74,7 +74,7 @@
     		}
 
     		if(foundURL == false) {
-    			return;
+    			return original;
     		}
 
     		var urls = []; // vetor com todos os urls da mensagem
@@ -119,6 +119,8 @@
                 var utterThis =  new SpeechSynthesisUtterance(removeURLS(activity.text));
                 console.log(activity.text);
                 console.log(utterThis);
+
+                // so fala as vezes... 
 
                 synth.speak(utterThis); 
 
