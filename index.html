@@ -46,6 +46,37 @@
 	        microphoneButtonColorOnDictate: 'red'
     	};
 
+    	function removeURL(original) {
+
+			var urlStart;
+			var urlEnd;
+
+			var foundURL = false;
+
+			for(var i = 0; i < original.length; i++) {
+    			if(original[i] == '(' && 
+    				original[i+1] == 'h' && 
+    				original[i+2] == 't' && 
+    				original[i+3] == 't' &&
+    				original[i+4] == 'p') {
+
+    				foundURL = true;
+    				urlStart = i;
+    			}
+    			if(foundURL && original[i] == ')') {
+    				urlEnd = i;
+    			}
+    		}
+
+    		if(foundULR == false) {
+    			return;
+    		}
+
+    		var url = original.substring(urlStart, urlEnd + 1);
+
+    		return original.replace(url, ".");
+ 		}
+
 
     (async function () {
 
@@ -73,7 +104,7 @@
 
                 var utterThis =  new SpeechSynthesisUtterance(activity.text);
 
-                synth.speak(utterThis); 
+                synth.speak(removeURL(utterThis)); 
 
                 
               }
@@ -128,12 +159,8 @@
 
 */
 
-/*function parseBotMessage(original) {
-    		for(int i = 0; i < original.length; i++) {
-    			//quando se encontrar (htt) cortar ate )
-    		}
-    	}
-		*/
+
+		
 
 </script>
 </body>
