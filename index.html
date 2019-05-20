@@ -46,10 +46,13 @@
 	        microphoneButtonColorOnDictate: 'red'
     	};
 
-    	function removeURL(original) {
+		function removeURLS(original) {
 
-			var urlStart;
-			var urlEnd;
+			var urlsStart = [];
+			var urlsEnd = [];
+
+			var auxS = 0;
+			var auxE = 0;
 
 			var foundURL = false;
 
@@ -61,10 +64,12 @@
     				original[i+4] == 'p') {
 
     				foundURL = true;
-    				urlStart = i;
+    				urlsStart[auxS] = i;
+    				auxS++;
     			}
     			if(foundURL && original[i] == ')') {
-    				urlEnd = i;
+    				urlsEnd[auxE] = i;
+    				auxE++;
     			}
     		}
 
@@ -72,9 +77,17 @@
     			return;
     		}
 
-    		var url = original.substring(urlStart, urlEnd + 1);
+    		var urls = []; // vetor com todos os urls da mensagem
+    		for(var j = 0; j < urlsStart.length; j++) {
+    			urls[j] = original.substring(urlsStart[j], urlsEnd[j] +1);
+    		}
 
-    		return original.replace(url, ".");
+    		return original.replace(urls[0], ".").
+    		replace(urls[1], ".").
+    		replace(urls[2], ".").
+    		replace(urls[3], ".").
+    		replace(urls[4], ".").
+    		replace(urls[5], ".");
  		}
 
 
@@ -102,7 +115,7 @@
                 console.log(activity.text);
 
 
-                var utterThis =  new SpeechSynthesisUtterance(removeURL(activity.text));
+                var utterThis =  new SpeechSynthesisUtterance(removeURLS(activity.text));
 
                 synth.speak(utterThis); 
 
