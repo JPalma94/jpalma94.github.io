@@ -46,13 +46,10 @@
 	        microphoneButtonColorOnDictate: 'red'
     	};
 
-		function removeURLS(original) {
+    	function removeURLS(original) {
 
-			var urlsStart = [];
-			var urlsEnd = [];
-
-			var auxS = 0;
-			var auxE = 0;
+			var urlStart;
+			var urlEnd;
 
 			var foundURL = false;
 
@@ -64,12 +61,10 @@
     				original[i+4] == 'p') {
 
     				foundURL = true;
-    				urlsStart[auxS] = i;
-    				auxS++;
+    				urlStart = i;
     			}
     			if(foundURL && original[i] == ')') {
-    				urlsEnd[auxE] = i;
-    				auxE++;
+    				urlEnd = i;
     			}
     		}
 
@@ -77,17 +72,9 @@
     			return;
     		}
 
-    		var urls = []; // vetor com todos os urls da mensagem
-    		for(var j = 0; j < urlsStart.length; j++) {
-    			urls[j] = original.substring(urlsStart[j], urlsEnd[j] +1);
-    		}
+    		var url = original.substring(urlStart, urlEnd + 1);
 
-    		return original.replace(urls[0], ".").
-    		replace(urls[1], ".").
-    		replace(urls[2], ".").
-    		replace(urls[3], ".").
-    		replace(urls[4], ".").
-    		replace(urls[5], ".");
+    		return original.replace(url, ".");
  		}
 
 
