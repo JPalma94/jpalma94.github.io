@@ -21,6 +21,10 @@
 	<script src="https://cdn.botframework.com/botframework-webchat/latest/webchat.js"></script> 
 	<!-- <script src="https://github.com/JPalma94/jpalma94.github.io/blob/master/webchat.js"></script> -->
 	<script>
+
+		// se der, adicionar intent e dialogo p/ ativar/desativar voz (basta SkillFaq)
+		var voice = true;
+
 		const styleOptions = {
 			bubbleBackground: '#f7f4f4',
 			bubbleFromUserBackground: 'white',
@@ -105,24 +109,22 @@
               // When receiving an activity of type "event" with name of "sample:backchannel", prompt it out.
               const { activity } = action.payload;
 
-              if (activity.type === 'message' && activity.from.id === 'nosapoiobot') {
-                // alert(JSON.stringify(activity, null, 2));
+              if (activity.type === 'message') {
 
-                var synth = window.speechSynthesis;
-                var voices = synth.getVoices();
+              	console.log(activity);
 
-                //console.log(activity);
-                //console.log(activity.name);
-                //console.log(activity.text);
+              	
+              	if(activity.from.id === 'nosapoiobot' && voice) {
+	                // alert(JSON.stringify(activity, null, 2));
 
+	                var synth = window.speechSynthesis;
+	                var voices = synth.getVoices();
 
-                var utterThis =  new SpeechSynthesisUtterance(removeURLS(activity.text));
-                console.log(activity.text);
-                console.log(utterThis);
+	                var utterThis =  new SpeechSynthesisUtterance(removeURLS(activity.text));
+	                synth.speak(utterThis); 
 
-                // so fala as vezes... 
+            	}
 
-                synth.speak(utterThis); 
 
                 
               }
@@ -141,8 +143,8 @@
           // a tentar por speechrecognition.continuous = true para ver se resolve a cena de continuar sempre a pedir para falar
 
           //webSpeechPonyfillFactory: window.WebChat.createBrowserWebSpeechPonyfillFactory(),
-          userID: 'YOUR_USER_ID',
-          username: 'Cliente',
+          userID: 'User',
+          username: 'João',
           locale: 'pt-PT',
           styleOptions,
           store
@@ -153,29 +155,7 @@
 
     })().catch(err => console.error(err));
 
-/*
 
- //utterThis.voiceURI = voices[30];
-                //utterThis.voiceURI = 'Google português de Portugal';
-                //utterThis.voice = voices[29];
-                //console.log(utterThis.voice);
-                //console.log(utterThis.voiceURI);
-                //utterThis.lang = voices[29];
-                //console.log(utterThis.lang);
-
-                //TENTAR
-                // utterThis.localService = true;
-
-                // voices[29] - pt-PT no android!
-
-
-                for(var i = 0; i < voices.length; i++) {
-                	console.log("Voices na posicao " + i + voices[i]);
-                }
-
-// https://stackoverflow.com/questions/36485170/speechsynthesis-not-working-to-speak-in-portuguese-pt-br
-
-*/
 
 
 		
