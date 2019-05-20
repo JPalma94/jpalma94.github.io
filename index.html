@@ -117,6 +117,7 @@
 
 
                 var utterThis =  new SpeechSynthesisUtterance(removeURLS(activity.text));
+                console.log(activity.text);
                 console.log(utterThis);
 
                 synth.speak(utterThis); 
