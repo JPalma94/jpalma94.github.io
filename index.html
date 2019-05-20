@@ -111,15 +111,15 @@
                 var synth = window.speechSynthesis;
                 var voices = synth.getVoices();
 
-                console.log(activity);
-                console.log(activity.name);
-                console.log(activity.text);
+                //console.log(activity);
+                //console.log(activity.name);
+                //console.log(activity.text);
 
 
                 var utterThis =  new SpeechSynthesisUtterance(removeURLS(activity.text));
+                console.log(utterThis);
 
                 synth.speak(utterThis); 
-                console.log(utterThis);
 
                 
               }
