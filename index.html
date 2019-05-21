@@ -98,9 +98,10 @@
 
     (async function () {
 
-		// https://github.com/microsoft/BotFramework-WebChat/blob/master/samples/11.customization-redux-actions/index.html
+		// https://github.com/microsoft/BotFramework-WebChat/blob/master/samples/ (11)
     	const store = window.WebChat.createStore(
-    		{},
+    		{}, // primeiro parametro da store, estado inicial - objeto vazio
+    		// segundo parametro - MIDDLEWARE
     		({ dispatch }) => next => action => {
             if (action.type === 'DIRECT_LINE/CONNECT_FULFILLED') {
               // After connected, we will send a message by dispatching a Redux action.
@@ -113,6 +114,16 @@
 
               	console.log(activity);
 
+              	/////
+              	//
+              	// FAZEEEEEER: Se msg = ligou a minha voz then VOICE = TRUE
+              	//		       Se msg = desativou a minha voz then VOICE = FALSE 
+
+
+              	// VER ISTOOO TB!!! - NO METODO, N É PRECISO VER HTTP... BASTA ( ... ) NAS MENSAGENS ENVIADAS PELO BOT
+              	//
+              	////
+
               	
               	if(activity.from.id === 'nosapoiobot' && voice) {
 	                // alert(JSON.stringify(activity, null, 2));
@@ -124,9 +135,6 @@
 	                synth.speak(utterThis); 
 
             	}
-
-
-                
               }
             }
             return next(action);
@@ -144,7 +152,7 @@
 
           //webSpeechPonyfillFactory: window.WebChat.createBrowserWebSpeechPonyfillFactory(),
           userID: 'User',
-          username: 'João',
+          username: 'Lol',
           locale: 'pt-PT',
           styleOptions,
           store
