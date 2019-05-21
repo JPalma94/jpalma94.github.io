@@ -100,6 +100,14 @@
     		replace(urls[5], ".");
  		}
 
+ 		function fixNOS(original) {
+            if(original.includes("NOS")) {
+                console.log("entrou")
+                return original.replace(/NOS/g, "nós.");
+            }
+            return original;
+        }
+
 
 
     (async function () {
@@ -135,22 +143,18 @@
 
 	                //var finalUtterance =
 
-	                var utterThis =  new SpeechSynthesisUtterance(removeURLS(activity.text));
-	                synth.speak(utterThis); 
+	                var utterThis =  new SpeechSynthesisUtterance(fixNOS(removeURLS(activity.text)));
+	                synth.speak(utterThis);
 
-
-
-
-
-
-	                var utterThis2 =  new SpeechSynthesisUtterance("Teste fâune fim");
-	                synth.speak(utterThis2); 
+/*
 
 	                var utterThis3 =  new SpeechSynthesisUtterance("Teste âumebenking fim");
 	                synth.speak(utterThis3); 
 
 	                var utterThis4 =  new SpeechSynthesisUtterance("Teste haumebanking fim");
 	                synth.speak(utterThis4); 
+
+	                */
 
 	                /* PARA ADAPTAR!:
 
