@@ -17,8 +17,6 @@
 </style>
 </head>
 <body>
-	    Click <a href="tel:966838948">here</a> to call.
-
 	<div id="webchat" role="main"></div>
 	<script src="https://cdn.botframework.com/botframework-webchat/latest/webchat.js"></script> 
 	<!-- <script src="https://github.com/JPalma94/jpalma94.github.io/blob/master/webchat.js"></script> -->
@@ -138,13 +136,18 @@
 	                var utterThis =  new SpeechSynthesisUtterance(removeURLS(activity.text));
 	                synth.speak(utterThis); 
 
-	                //var utterThis =  new SpeechSynthesisUtterance("Verifique se a opção 'mute' está ativa");
+	                //var utterThis =  new SpeechSynthesisUtterance("São 21h de momento e depois 9h lol.");
 	                //synth.speak(utterThis); 
 
 	                /* PARA ADAPTAR!:
 
 	                "Configure a box de forma semelhante à sua TV (4:3 = convencional, 16:9 = ecrã panorâmico)." - tirar o que esta nos parentesis
 
+
+					-----------
+					se a msg contem a palavra NOS, dar replace por NÓS
+					O MESMO PARA: Phone - Faune
+									homebanking - hâumebenking
 
 
 	                */
