@@ -22,8 +22,13 @@
 	<!-- <script src="https://github.com/JPalma94/jpalma94.github.io/blob/master/webchat.js"></script> -->
 	<script>
 
-		// se der, adicionar intent e dialogo p/ ativar/desativar voz (basta SkillFaq)
+		// Global vars //
 		var voice = true;
+
+		// Strings //
+		var msgAtivarVoz = 'Ativou a minha voz.'
+		var msgDesativarVoz = 'Desativou a minha voz. Continuarei a satisfazer as suas questões através de texto.'
+
 
 		const styleOptions = {
 			bubbleBackground: '#f7f4f4',
@@ -50,6 +55,7 @@
 	        microphoneButtonColorOnDictate: 'red'
     	};
 
+    	// remove URLS de mensagens enviadas PELO BOT
 		function removeURLS(original) {
 
 			var urlsStart = [];
@@ -110,23 +116,19 @@
               // When receiving an activity of type "event" with name of "sample:backchannel", prompt it out.
               const { activity } = action.payload;
 
-              if (activity.type === 'message') {
+              console.log(activity);
 
-              	console.log(activity);
+              if (activity.type === 'message' && activity.from.id === 'nosapoiobot') {
 
-              	/////
-              	//
-              	// FAZEEEEEER: Se msg = ligou a minha voz then VOICE = TRUE
-              	//		       Se msg = desativou a minha voz then VOICE = FALSE 
+              	if(activity.text === msgAtivarVoz) {
+              		voice = true;
+              	}
 
-
-              	// VER ISTOOO TB!!! - NO METODO, N É PRECISO VER HTTP... BASTA ( ... ) NAS MENSAGENS ENVIADAS PELO BOT
-              	//
-              	////
-
-              	
-              	if(activity.from.id === 'nosapoiobot' && voice) {
-	                // alert(JSON.stringify(activity, null, 2));
+              	if(activity.text === msgDesativarVoz) {
+              		voice = false;
+              	}
+        
+              	if(voice) {
 
 	                var synth = window.speechSynthesis;
 	                var voices = synth.getVoices();
@@ -146,10 +148,6 @@
     	window.WebChat.renderWebChat({
           // caso o token nao de, ir a (azure web app bot -> channels -> configure direct line) buscar
           directLine: window.WebChat.createDirectLine({ token: 'ASr7rpWWuOM.zGP5-hPcd482Lb1ArV8byWz3G0S7GK1voDzDJSQ7XBU' }),
-          // https://w3c.github.io/speech-api/ - Web Speech API
-
-          // a tentar por speechrecognition.continuous = true para ver se resolve a cena de continuar sempre a pedir para falar
-
           //webSpeechPonyfillFactory: window.WebChat.createBrowserWebSpeechPonyfillFactory(),
           userID: 'User',
           username: 'Lol',
@@ -157,7 +155,6 @@
           styleOptions,
           store
       }, document.getElementById('webchat'));
-
 
     	document.querySelector('#webchat > *').focus();
 
