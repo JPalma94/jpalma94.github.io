@@ -4,31 +4,30 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Chatbot de Apoio ao Cliente NOS</title>
 	<style>
-	html, body { height: 100% }
-	body { 
-		margin: 0; 
-		background-color: white;
-	}
 
-	#webchat {
-		height: 100%;
-		width: 100%;
-	}
-</style>
+		html, body { height: 100% }
+		body { 
+			margin: 0; 
+			background-color: white;
+		}
+
+		#webchat {
+			height: 100%;
+			width: 100%;
+		}
+
+	</style>
 </head>
 <body>
 	<div id="webchat" role="main"></div>
 	<script src="https://cdn.botframework.com/botframework-webchat/latest/webchat.js"></script> 
-	<!-- <script src="https://github.com/JPalma94/jpalma94.github.io/blob/master/webchat.js"></script> -->
 	<script>
-
 		// Global vars //
 		var voice = true;
 
 		// Strings //
 		var msgAtivarVoz = 'Ativou a minha voz.'
 		var msgDesativarVoz = 'Desativou a minha voz. Continuarei a satisfazer as suas questões através de texto.'
-
 
 		const styleOptions = {
 			bubbleBackground: '#f7f4f4',
@@ -55,7 +54,7 @@
 	        microphoneButtonColorOnDictate: 'red'
     	};
 
-    	// remove URLS de mensagens enviadas PELO BOT
+    	// remove URLS de mensagens
 		function removeURLS(original) {
 
 			var urlsStart = [];
@@ -102,18 +101,24 @@
 
  		function fixNOS(original) {
             if(original.includes("NOS")) {
-                console.log("entrou")
                 return original.replace(/NOS/g, "nós.");
             }
             return original;
         }
 
         function fixMBPhone(original) {
-        	// faune
+        	if(original.includes("Phone")) {
+                return original.replace(/Phone/g, "faune.");
+            }
+            return original;
         }
 
         function fixHomebanking(original) {
-
+        	if(original.includes("Homebanking")) {
+                console.log("entrou")
+                return original.replace(/Homebanking/g, "hâume banking.");
+            }
+            return original;
         }
 
 
@@ -150,38 +155,17 @@
 	                var voices = synth.getVoices();
 
 
-	                var utterThis =  new SpeechSynthesisUtterance(fixNOS(removeURLS(activity.text)));
+	                var utterThis =  new SpeechSynthesisUtterance(fixMBPhone(fixHomebanking(fixNOS(removeURLS(activity.text)))));
 	                synth.speak(utterThis);
-
-
-	                // TESTAR ESTES NO ANDROID VVVVVVVVVVVVVVVVV
-
+					
+					/*
 	                var utterThis3 =  new SpeechSynthesisUtterance("Teste hâume banking um.");
 	                synth.speak(utterThis3); 
 
 	                var utterThis4 =  new SpeechSynthesisUtterance("Teste hôume banking um.");
 	                synth.speak(utterThis4); 
-
-	                
-
-
-	                
-
-	                
-
-	                /* PARA ADAPTAR!:
-
-	                "Configure a box de forma semelhante à sua TV (4:3 = convencional, 16:9 = ecrã panorâmico)." - tirar o que esta nos parentesis
-
-
-					-----------
-					se a msg contem a palavra NOS, dar replace por NÓS
-					O MESMO PARA: Phone - Faune
-									homebanking - hâumebenking
-
-
-	                */
-
+               		
+               		*/
             	}
               }
             }
