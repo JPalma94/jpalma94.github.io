@@ -159,21 +159,15 @@
 					}
 					
 
-					if (action.type === 'WEB_CHAT/SET_DICTATE_STATE') {
+					if (action.type === 'WEB_CHAT/START_SPEAKING') {
 						
-						const { dictateState } = action.payload;
+						//const { suggestedActions } = action.payload;
 						
-						console.log(dictateState);
+						console.log("START SPEAKING");
 						
 					}
 
-					if (action.type === 'WEB_CHAT/SET_DICTATE_INTERIMS') {
-						
-						const { dictateInterims } = action.payload;
-						
-						console.log(dictateInterims);
-						
-					}
+					
 
 					if (action.type === 'DIRECT_LINE/INCOMING_ACTIVITY') {
 
