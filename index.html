@@ -129,6 +129,8 @@
 			return original;
 		}
 
+		// ------------------------------- //
+
 		(async function () {
 
 			const store = window.WebChat.createStore(
@@ -138,12 +140,26 @@
 				// o segundo parâmetro é o middleware em si
 				({ dispatch }) => next => action => {
 
+
 					if (action.type === 'DIRECT_LINE/CONNECT_FULFILLED') {
 
 					  // After connected, we can send a message by dispatching a Redux action.
 					  // dispatch({ type: 'WEB_CHAT/SEND_MESSAGE', payload: { text: 'sample:backchannel' } });
 
-					} else if (action.type === 'DIRECT_LINE/INCOMING_ACTIVITY') {
+					} 
+
+					if (action.type === 'WEB_CHAT/SEND_MESSAGE') {
+
+						const { method } = action.payload;
+						const { text } = action.payload;
+
+						console.log(method);
+						console.log(text);
+					}
+
+					
+
+					if (action.type === 'DIRECT_LINE/INCOMING_ACTIVITY') {
 
 						const { activity } = action.payload;
 
