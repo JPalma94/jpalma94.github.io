@@ -8,7 +8,7 @@
 		html, body { height: 100% }
 		body { 
 			margin: 0; 
-			background-color: white;
+			background-color: grey;
 		}
 
 		#webchat {
@@ -40,23 +40,21 @@
 			bubbleFromUserBorderRadius: 10,
 			bubbleFromUserBorder: 'solid 0.5px #000000',
 
-	        rootHeight: '50%', // 50% para dividir o ecrã
-	        rootWidth: '100%',
+			rootHeight: '90%', // 50% para dividir o ecrã
+			rootWidth: '100%',
 
-	        botAvatarImage: 'https://raw.githubusercontent.com/JPalma94/jpalma94.github.io/master/nos1.png',
-	        userAvatarImage: 'https://raw.githubusercontent.com/JPalma94/jpalma94.github.io/master/user12.png',
+			botAvatarImage: 'https://raw.githubusercontent.com/JPalma94/jpalma94.github.io/master/nos1.png',
+			userAvatarImage: 'https://raw.githubusercontent.com/JPalma94/jpalma94.github.io/master/user12.png',
 
-	        hideUploadButton: true,
+			hideUploadButton: true,
 
-	        microphoneButtonColorOnDictate: 'red',
+			microphoneButtonColorOnDictate: 'red'
 
-	        showSpokenText: false
+			//VER DAS HERO CARDS
+			//VER DAS SUGGESTED ACTIONS
+		};
 
-	        //VER DAS HERO CARDS
-	        //VER DAS SUGGESTED ACTIONS
-    	};
-
-    	// remove URLS de mensagens
+		// remove URLS de mensagens
 		function removeURLS(original) {
 
 			var urlsStart = [];
@@ -68,133 +66,133 @@
 			var foundURL = false;
 
 			for(var i = 0; i < original.length; i++) {
-    			if(original[i] == '(' && 
-    				original[i+1] == 'h' && 
-    				original[i+2] == 't' && 
-    				original[i+3] == 't' &&
-    				original[i+4] == 'p') {
+				if(original[i] == '(' && 
+					original[i+1] == 'h' && 
+					original[i+2] == 't' && 
+					original[i+3] == 't' &&
+					original[i+4] == 'p') {
 
-    				foundURL = true;
-    				urlsStart[auxS] = i;
-    				auxS++;
-    			}
-    			if(foundURL && original[i] == ')') {
-    				urlsEnd[auxE] = i;
-    				auxE++;
-    			}
-    		}
+					foundURL = true;
+					urlsStart[auxS] = i;
+					auxS++;
+				}
+				if(foundURL && original[i] == ')') {
+					urlsEnd[auxE] = i;
+					auxE++;
+				}
+			}
 
-    		if(foundURL == false) {
-    			return original;
-    		}
+			if(foundURL == false) {
+				return original;
+			}
 
-    		var urls = []; // vetor com todos os urls da mensagem
-    		for(var j = 0; j < urlsStart.length; j++) {
-    			urls[j] = original.substring(urlsStart[j], urlsEnd[j] +1);
-    		}
+			var urls = []; // vetor com todos os urls da mensagem
+			for(var j = 0; j < urlsStart.length; j++) {
+				urls[j] = original.substring(urlsStart[j], urlsEnd[j] +1);
+			}
 
-    		return original.replace(urls[0], ".").
-    		replace(urls[1], ".").
-    		replace(urls[2], ".").
-    		replace(urls[3], ".").
-    		replace(urls[4], ".").
-    		replace(urls[5], ".");
- 		}
+			return original.replace(urls[0], ".").
+			replace(urls[1], ".").
+			replace(urls[2], ".").
+			replace(urls[3], ".").
+			replace(urls[4], ".").
+			replace(urls[5], ".");
+		}
 
- 		function fixNOS(original) {
-            if(original.includes("NOS")) {
-                return original.replace(/NOS/g, "nós.");
-            }
-            return original;
-        }
+		function fixNOS(original) {
+			if(original.includes("NOS")) {
+				return original.replace(/NOS/g, "nós.");
+			}
+			return original;
+		}
 
-        function fixMBPhone(original) {
-        	if(original.includes("Phone")) {
-                return original.replace(/Phone/g, "faune.");
-            }
-            return original;
-        }
+		function fixMBPhone(original) {
+			if(original.includes("Phone")) {
+				return original.replace(/Phone/g, "faune.");
+			}
+			return original;
+		}
 
-        function fixHomebanking(original) {
-        	if(original.includes("Homebanking")) {
-                console.log("entrou")
-                return original.replace(/Homebanking/g, "hâume banking.");
-            }
-            return original;
-        }
+		function fixHomebanking(original) {
+			if(original.includes("Homebanking")) {
+				console.log("entrou")
+				return original.replace(/Homebanking/g, "hâume banking.");
+			}
+			return original;
+		}
 
-	    (async function () {
+		(async function () {
 
-	    	const store = window.WebChat.createStore(
+			const store = window.WebChat.createStore(
 
-	    		{}, // primeiro parametro da store, estado inicial - objeto vazio
-	    	
-	    		// o segundo parâmetro é o middleware em si
-	    		({ dispatch }) => next => action => {
+				{}, // primeiro parametro da store, estado inicial - objeto vazio
+			
+				// o segundo parâmetro é o middleware em si
+				({ dispatch }) => next => action => {
 
-		            if (action.type === 'DIRECT_LINE/CONNECT_FULFILLED') {
+					if (action.type === 'DIRECT_LINE/CONNECT_FULFILLED') {
 
-		              // After connected, we can send a message by dispatching a Redux action.
-		              // dispatch({ type: 'WEB_CHAT/SEND_MESSAGE', payload: { text: 'sample:backchannel' } });
+					  // After connected, we can send a message by dispatching a Redux action.
+					  // dispatch({ type: 'WEB_CHAT/SEND_MESSAGE', payload: { text: 'sample:backchannel' } });
 
-		            } else if (action.type === 'DIRECT_LINE/INCOMING_ACTIVITY') {
+					} else if (action.type === 'DIRECT_LINE/INCOMING_ACTIVITY') {
 
-			        	const { activity } = action.payload;
+						const { activity } = action.payload;
 
-			        	console.log(activity); // ver o contéudo da atividade
+						console.log(activity); // ver o contéudo da atividade
 
-			        	// se a atividade recebida for do tipo MESSAGE e vier do BOT
-			            if (activity.type === 'message' && activity.from.id === 'nosapoiobot') {
+						// se a atividade recebida for do tipo MESSAGE e vier do BOT
+						if (activity.type === 'message' && activity.from.id === 'nosapoiobot') {
 
-			            	// se o user quiser ativar a voz
-				            if(activity.text === msgAtivarVoz) {
-				            	voice = true;
-				            }
+							// se o user quiser ativar a voz
+							if(activity.text === msgAtivarVoz) {
+								voice = true;
+							}
 
-				            // se o user quiser desativar a voz
-				            if(activity.text === msgDesativarVoz) {
-				            	voice = false;
-				            }
-				        
-				        	// se a voz estiver ativada, tratar do 
-				        	// texto da mensagem e sintetiza-la
-				           	if(voice) {
+							// se o user quiser desativar a voz
+							if(activity.text === msgDesativarVoz) {
+								voice = false;
+							}
+						
+							// se a voz estiver ativada, tratar do 
+							// texto da mensagem e sintetiza-la
+							if(voice) {
 
-					        	var synth = window.speechSynthesis;
-					            var voices = synth.getVoices();
+								var synth = window.speechSynthesis;
+								var voices = synth.getVoices();
 
-					            var utterThis =  new SpeechSynthesisUtterance(
-					            	fixNOS(
-					            		fixMBPhone(
-					            			fixHomebanking(
-					            				removeURLS(activity.text)
-					            			)
-					            		)
-					            	)
-					            );
-					            synth.speak(utterThis);
-				            }
-		        		}
-		        	}
+								var utterThis =  new SpeechSynthesisUtterance(
+									fixNOS(
+										fixMBPhone(
+											fixHomebanking(
+												removeURLS(activity.text)
+											)
+										)
+									)
+								);
+								synth.speak(utterThis);
+							}
+						}
+					}
 
-		            return next(action);
-	          	}
-	    	);
+					return next(action);
+				}
+			);
 
-	    	window.WebChat.renderWebChat({
-	          // caso o token nao de, ir a (azure web app bot -> channels -> configure direct line) buscar
-	          directLine: window.WebChat.createDirectLine({ token: 'ASr7rpWWuOM.zGP5-hPcd482Lb1ArV8byWz3G0S7GK1voDzDJSQ7XBU' }),
-	          //webSpeechPonyfillFactory: window.WebChat.createBrowserWebSpeechPonyfillFactory(),
-	          userID: 'User',
-	          username: 'Lol',
-	          locale: 'pt-PT',
-	          styleOptions,
-	          store
-	      }, document.getElementById('webchat'));
+			window.WebChat.renderWebChat({
+			  // caso o token nao de, ir a (azure web app bot -> channels -> configure direct line) buscar
+			  directLine: window.WebChat.createDirectLine({ token: 'ASr7rpWWuOM.zGP5-hPcd482Lb1ArV8byWz3G0S7GK1voDzDJSQ7XBU' }),
+			  //webSpeechPonyfillFactory: window.WebChat.createBrowserWebSpeechPonyfillFactory(),
+			  userID: 'User',
+			  username: 'Lol',
+			  locale: 'pt-PT',
+			  styleOptions,
+			  store
+		  }, document.getElementById('webchat'));
 
-	    	document.querySelector('#webchat > *').focus();
+			document.querySelector('#webchat > *').focus();
 
-    	})().catch(err => console.error(err));
+		})().catch(err => console.error(err));
 
 		</script>
 	</body>
