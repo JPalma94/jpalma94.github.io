@@ -159,11 +159,21 @@
 					}
 					
 
-					if (action.type === 'WEB_CHAT/START_SPEAKING') {
+					if (action.type === 'WEB_CHAT/START_DICTATE') {
+						
+						//const { suggestedActions } = action.payload;
+						console.log("entrou");
+						
+						console.log("START dictate!");
+						
+					}
+
+					if (action.type === 'WEB_CHAT/STOP_DICTATE') {
+						console.log("entrou2");
 						
 						//const { suggestedActions } = action.payload;
 						
-						console.log("START SPEAKING");
+						console.log("STOP dictate!");
 						
 					}
 
