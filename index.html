@@ -157,13 +157,13 @@
 						console.log(text);
 					}
 
-					
+
 
 					if (action.type === 'DIRECT_LINE/INCOMING_ACTIVITY') {
 
 						const { activity } = action.payload;
 
-						console.log(activity); // ver o contéudo da atividade
+						// console.log(activity); // ver o contéudo da atividade
 
 						// se a atividade recebida for do tipo MESSAGE e vier do BOT
 						if (activity.type === 'message' && activity.from.id === 'nosapoiobot') {
