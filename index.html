@@ -22,13 +22,14 @@
 	<div id="webchat" role="main"></div>
 	<script src="https://cdn.botframework.com/botframework-webchat/latest/webchat.js"></script> 
 	<script>
-		// Global vars //
+		// Variavel Global //
 		var voice = true;
 
 		// Strings //
 		var msgAtivarVoz = 'Ativou a minha voz.'
 		var msgDesativarVoz = 'Desativou a minha voz. Continuarei a satisfazer as suas questões através de texto.'
 
+		// Styling custom para o Webchat //
 		const styleOptions = {
 			bubbleBackground: '#f7f4f4',
 			bubbleFromUserBackground: 'white',
@@ -39,19 +40,20 @@
 			bubbleFromUserBorderRadius: 10,
 			bubbleFromUserBorder: 'solid 0.5px #000000',
 
-	        rootHeight: '100%', // 50%
+	        rootHeight: '50%', // 50% para dividir o ecrã
 	        rootWidth: '100%',
 
-	        // userAvatarInitials: 'YOU',
-	        // botAvatarInitials: 'NOS',
-
-	        //avatarSize: 50,
 	        botAvatarImage: 'https://raw.githubusercontent.com/JPalma94/jpalma94.github.io/master/nos1.png',
 	        userAvatarImage: 'https://raw.githubusercontent.com/JPalma94/jpalma94.github.io/master/user12.png',
 
 	        hideUploadButton: true,
 
-	        microphoneButtonColorOnDictate: 'red'
+	        microphoneButtonColorOnDictate: 'red',
+
+	        showSpokenText: false
+
+	        //VER DAS HERO CARDS
+	        //VER DAS SUGGESTED ACTIONS
     	};
 
     	// remove URLS de mensagens
@@ -121,85 +123,85 @@
             return original;
         }
 
+	    (async function () {
 
+	    	const store = window.WebChat.createStore(
 
-    (async function () {
+	    		{}, // primeiro parametro da store, estado inicial - objeto vazio
+	    	
+	    		// o segundo parâmetro é o middleware em si
+	    		({ dispatch }) => next => action => {
 
-		// https://github.com/microsoft/BotFramework-WebChat/blob/master/samples/ (11)
-    	const store = window.WebChat.createStore(
-    		{}, // primeiro parametro da store, estado inicial - objeto vazio
-    		// segundo parametro - MIDDLEWARE
-    		({ dispatch }) => next => action => {
-            if (action.type === 'DIRECT_LINE/CONNECT_FULFILLED') {
-              // After connected, we will send a message by dispatching a Redux action.
-              // dispatch({ type: 'WEB_CHAT/SEND_MESSAGE', payload: { text: 'sample:backchannel' } });
-            } else if (action.type === 'DIRECT_LINE/INCOMING_ACTIVITY') {
-              // When receiving an activity of type "event" with name of "sample:backchannel", prompt it out.
-              const { activity } = action.payload;
+		            if (action.type === 'DIRECT_LINE/CONNECT_FULFILLED') {
 
-              console.log(activity);
+		              // After connected, we can send a message by dispatching a Redux action.
+		              // dispatch({ type: 'WEB_CHAT/SEND_MESSAGE', payload: { text: 'sample:backchannel' } });
 
-              if (activity.type === 'message' && activity.from.id === 'nosapoiobot') {
+		            } else if (action.type === 'DIRECT_LINE/INCOMING_ACTIVITY') {
 
-              	if(activity.text === msgAtivarVoz) {
-              		voice = true;
-              	}
+			        	const { activity } = action.payload;
 
-              	if(activity.text === msgDesativarVoz) {
-              		voice = false;
-              	}
-        
-              	if(voice) {
+			        	console.log(activity); // ver o contéudo da atividade
 
-	                var synth = window.speechSynthesis;
-	                var voices = synth.getVoices();
+			        	// se a atividade recebida for do tipo MESSAGE e vier do BOT
+			            if (activity.type === 'message' && activity.from.id === 'nosapoiobot') {
 
+			            	// se o user quiser ativar a voz
+				            if(activity.text === msgAtivarVoz) {
+				            	voice = true;
+				            }
 
-	                var utterThis =  new SpeechSynthesisUtterance(fixMBPhone(fixHomebanking(fixNOS(removeURLS(activity.text)))));
-	                synth.speak(utterThis);
-					
-					/*
-	                var utterThis3 =  new SpeechSynthesisUtterance("Teste hâume banking um.");
-	                synth.speak(utterThis3); 
+				            // se o user quiser desativar a voz
+				            if(activity.text === msgDesativarVoz) {
+				            	voice = false;
+				            }
+				        
+				        	// se a voz estiver ativada, tratar do 
+				        	// texto da mensagem e sintetiza-la
+				           	if(voice) {
 
-	                var utterThis4 =  new SpeechSynthesisUtterance("Teste hôume banking um.");
-	                synth.speak(utterThis4); 
-               		
-               		*/
-            	}
-              }
-            }
-            return next(action);
-          }
-    	);
+					        	var synth = window.speechSynthesis;
+					            var voices = synth.getVoices();
 
-    	
+					            var utterThis =  new SpeechSynthesisUtterance(
+					            	fixNOS(
+					            		fixMBPhone(
+					            			fixHomebanking(
+					            				removeURLS(activity.text)
+					            			)
+					            		)
+					            	)
+					            );
+					            synth.speak(utterThis);
+				            }
+		        		}
+		        	}
 
-    	window.WebChat.renderWebChat({
-          // caso o token nao de, ir a (azure web app bot -> channels -> configure direct line) buscar
-          directLine: window.WebChat.createDirectLine({ token: 'ASr7rpWWuOM.zGP5-hPcd482Lb1ArV8byWz3G0S7GK1voDzDJSQ7XBU' }),
-          //webSpeechPonyfillFactory: window.WebChat.createBrowserWebSpeechPonyfillFactory(),
-          userID: 'User',
-          username: 'Lol',
-          locale: 'pt-PT',
-          styleOptions,
-          store
-      }, document.getElementById('webchat'));
+		            return next(action);
+	          	}
+	    	);
 
-    	document.querySelector('#webchat > *').focus();
+	    	window.WebChat.renderWebChat({
+	          // caso o token nao de, ir a (azure web app bot -> channels -> configure direct line) buscar
+	          directLine: window.WebChat.createDirectLine({ token: 'ASr7rpWWuOM.zGP5-hPcd482Lb1ArV8byWz3G0S7GK1voDzDJSQ7XBU' }),
+	          //webSpeechPonyfillFactory: window.WebChat.createBrowserWebSpeechPonyfillFactory(),
+	          userID: 'User',
+	          username: 'Lol',
+	          locale: 'pt-PT',
+	          styleOptions,
+	          store
+	      }, document.getElementById('webchat'));
 
-    })().catch(err => console.error(err));
+	    	document.querySelector('#webchat > *').focus();
 
+    	})().catch(err => console.error(err));
 
-
-
-		
-
-</script>
-</body>
+		</script>
+	</body>
 </html>
 
 
-
-
+<!-- https://github.com/microsoft/BotFramework-WebChat/blob/master/samples/ (11) | MIDDLEWARE-->
+<!-- https://github.com/Microsoft/BotFramework-WebChat/blob/master/packages/component/src/Styles/defaultStyleOptions.js | VER HERO CARDS!-->
+		
 
