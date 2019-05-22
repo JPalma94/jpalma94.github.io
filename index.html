@@ -108,6 +108,14 @@
             return original;
         }
 
+        function fixMBPhone(original) {
+
+        }
+
+        function fixHomebanking(original) {
+
+        }
+
 
 
     (async function () {
@@ -141,20 +149,29 @@
 	                var synth = window.speechSynthesis;
 	                var voices = synth.getVoices();
 
-	                //var finalUtterance =
 
 	                var utterThis =  new SpeechSynthesisUtterance(fixNOS(removeURLS(activity.text)));
 	                synth.speak(utterThis);
 
-/*
 
-	                var utterThis3 =  new SpeechSynthesisUtterance("Teste âumebenking fim");
+	                // TESTAR ESTES NO ANDROID VVVVVVVVVVVVVVVVV
+
+	                var utterThis3 =  new SpeechSynthesisUtterance("Teste âumebenking um.");
 	                synth.speak(utterThis3); 
 
-	                var utterThis4 =  new SpeechSynthesisUtterance("Teste haumebanking fim");
+	                var utterThis4 =  new SpeechSynthesisUtterance("Teste haumebanking dois.");
 	                synth.speak(utterThis4); 
 
-	                */
+	                var utterThis5 =  new SpeechSynthesisUtterance("Teste omebanking três.");
+	                synth.speak(utterThis5); 
+
+	                var utterThis6 =  new SpeechSynthesisUtterance("Teste MB faune quatro.");
+	                synth.speak(utterThis6); 
+
+	                var utterThis7 =  new SpeechSynthesisUtterance("Teste MB fâune cinco.");
+	                synth.speak(utterThis7); 
+
+	                
 
 	                /* PARA ADAPTAR!:
 
