@@ -99,6 +99,8 @@
 			replace(urls[5], ".");
 		}
 
+		// Funções para colmatar pronuncia //
+
 		function fixNOS(original) {
 			if(original.includes("NOS")) {
 				return original.replace(/NOS/g, "nós.");
@@ -115,8 +117,14 @@
 
 		function fixHomebanking(original) {
 			if(original.includes("Homebanking")) {
-				console.log("entrou")
 				return original.replace(/Homebanking/g, "hâume banking.");
+			}
+			return original;
+		}
+
+		function fixPonto(original) {
+			if(original.includes("2.0")) {
+				return original.replace(/2.0/g, "dois ponto zero");
 			}
 			return original;
 		}
@@ -165,7 +173,9 @@
 									fixNOS(
 										fixMBPhone(
 											fixHomebanking(
-												removeURLS(activity.text)
+												fixPonto(
+													removeURLS(activity.text)
+												)
 											)
 										)
 									)
