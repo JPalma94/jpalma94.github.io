@@ -148,16 +148,32 @@
 
 					} 
 
+					
 					if (action.type === 'WEB_CHAT/SEND_MESSAGE') {
 
 						const { method } = action.payload;
 						const { text } = action.payload;
 
-						console.log(method);
-						console.log(text);
+						console.log(method); // keyboard
+						console.log(text); // texto da msg
+					}
+					
+
+					if (action.type === 'WEB_CHAT/SET_DICTATE_STATE') {
+						
+						const { dictateState } = action.payload;
+						
+						console.log(dictateState);
+						
 					}
 
-
+					if (action.type === 'WEB_CHAT/SET_DICTATE_INTERIMS') {
+						
+						const { dictateInterims } = action.payload;
+						
+						console.log(dictateInterims);
+						
+					}
 
 					if (action.type === 'DIRECT_LINE/INCOMING_ACTIVITY') {
 
