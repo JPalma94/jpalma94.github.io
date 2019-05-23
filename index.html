@@ -22,8 +22,10 @@
 	<div id="webchat" role="main"></div>
 	<script src="https://cdn.botframework.com/botframework-webchat/latest/webchat.js"></script> 
 	<script>
-		// Variavel Global //
+		// Variaveis Global //
 		var voice = true;
+		var synth = window.speechSynthesis;
+
 
 		// Strings //
 		var msgAtivarVoz = 'Ativou a minha voz.'
@@ -144,46 +146,15 @@
 					if (action.type === 'DIRECT_LINE/CONNECT_FULFILLED') {
 
 					  // After connected, we can send a message by dispatching a Redux action.
-					  // dispatch({ type: 'WEB_CHAT/SEND_MESSAGE', payload: { text: 'sample:backchannel' } });
+					  // dispatch({ type: 'WEB_CHAT/SEND_MESSAGE', payload: { text: 'teste' } });
 
-					} 
-
-					
-					if (action.type === 'WEB_CHAT/SEND_MESSAGE') {
-
-						const { method } = action.payload;
-						const { text } = action.payload;
-
-						console.log(method); // keyboard
-						console.log(text); // texto da msg
-					}
-					
-
-					if (action.type === 'WEB_CHAT/START_DICTATE') {
-						
-						//const { suggestedActions } = action.payload;
-						console.log("entrou");
-						
-						console.log("START dictate!");
-						
-					}
-
-					if (action.type === 'WEB_CHAT/STOP_DICTATE') {
-						console.log("entrou2");
-						
-						//const { suggestedActions } = action.payload;
-						
-						console.log("STOP dictate!");
-						
-					}
-
-					
+					} 					
 
 					if (action.type === 'DIRECT_LINE/INCOMING_ACTIVITY') {
 
 						const { activity } = action.payload;
 
-						// console.log(activity); // ver o contéudo da atividade
+						console.log(activity); // ver o contéudo da atividade
 
 						// se a atividade recebida for do tipo MESSAGE e vier do BOT
 						if (activity.type === 'message' && activity.from.id === 'nosapoiobot') {
@@ -196,13 +167,13 @@
 							// se o user quiser desativar a voz
 							if(activity.text === msgDesativarVoz) {
 								voice = false;
+								synth.cancel();
 							}
 						
 							// se a voz estiver ativada, tratar do 
 							// texto da mensagem e sintetiza-la
 							if(voice) {
 
-								var synth = window.speechSynthesis;
 								var voices = synth.getVoices();
 
 								var utterThis =  new SpeechSynthesisUtterance(
@@ -216,6 +187,7 @@
 										)
 									)
 								);
+
 								synth.speak(utterThis);
 							}
 						}
@@ -235,6 +207,7 @@
 			  styleOptions,
 			  store
 		  }, document.getElementById('webchat'));
+
 
 			document.querySelector('#webchat > *').focus();
 
