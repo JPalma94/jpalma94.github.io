@@ -9,11 +9,14 @@
 		body { 
 			margin: 0; 
 			background-color: white;
+
 		}
 
 		#webchat {
 			height: 100%;
 			width: 100%;
+			margin: 0;
+			opacity: 1;
 		}
 
 	</style>
@@ -22,17 +25,24 @@
 	<div id="webchat" role="main"></div>
 	<script src="https://cdn.botframework.com/botframework-webchat/latest/webchat.js"></script> 
 	<script>
-		// Variaveis Global //
+
+		// Variaveis Globais //
 		var voice = true;
 		var synth = window.speechSynthesis;
-
 
 		// Strings //
 		var msgAtivarVoz = 'Ativou a minha voz.'
 		var msgDesativarVoz = 'Desativou a minha voz. Continuarei a satisfazer as suas questões através de texto.'
 
 		// Styling custom para o Webchat //
+		//https://github.com/microsoft/BotFramework-WebChat/blob/master/packages/component/src/Styles/defaultStyleOptions.js
 		const styleOptions = {
+
+			//background-color: 'White',
+			sendBoxBackground: 'White',
+
+			sendBoxHeight: 40,
+
 			bubbleBackground: '#f7f4f4',
 			bubbleFromUserBackground: 'white',
 
@@ -142,7 +152,6 @@
 				// o segundo parâmetro é o middleware em si
 				({ dispatch }) => next => action => {
 
-
 					if (action.type === 'DIRECT_LINE/CONNECT_FULFILLED') {
 
 					  // After connected, we can send a message by dispatching a Redux action.
@@ -154,7 +163,9 @@
 
 						const { activity } = action.payload;
 
-						console.log(activity); // ver o contéudo da atividade
+						// ver o contéudo da atividade
+						console.log(activity); 
+
 
 						// se a atividade recebida for do tipo MESSAGE e vier do BOT
 						if (activity.type === 'message' && activity.from.id === 'nosapoiobot') {
@@ -176,17 +187,54 @@
 
 								var voices = synth.getVoices();
 
-								var utterThis =  new SpeechSynthesisUtterance(
-									fixNOS(
-										fixMBPhone(
-											fixHomebanking(
-												fixPonto(
-													removeURLS(activity.text)
+								if(typeof activity.attachments === 'undefined') {
+
+									var utterThis =  new SpeechSynthesisUtterance(
+										fixNOS(
+											fixMBPhone(
+												fixHomebanking(
+													fixPonto(
+														removeURLS(activity.text)
+													)
 												)
 											)
 										)
-									)
-								);
+									);
+
+								} else /* estamos numa hero card*/ {
+
+									var utteranceText;
+
+									// tratar de hero cards com 1, 2 e 3 botoes
+									// concatena o text com o que diz nos botoes
+									switch(activity.attachments[0].content.buttons.length) {
+										
+										case 1:
+											utteranceText = activity.attachments[0].content.text + "." + 
+																 activity.attachments[0].content.buttons[0].value
+											break;
+
+										case 2:
+											utteranceText = activity.attachments[0].content.text + "." + 
+																 activity.attachments[0].content.buttons[0].value + "." + 
+																 activity.attachments[0].content.buttons[1].value
+											break;
+
+										case 3:
+											utteranceText = activity.attachments[0].content.text + "." + 
+																 activity.attachments[0].content.buttons[0].value + "." + 
+																 activity.attachments[0].content.buttons[1].value + "." +
+																 activity.attachments[0].content.buttons[2].value
+											break;
+
+										default:
+											utteranceText = "Numero inválido de botões."
+											console.log('Numero invalido de botões.')
+									}
+
+									var utterThis = new SpeechSynthesisUtterance(utteranceText);
+
+								}
 
 								synth.speak(utterThis);
 							}
@@ -194,12 +242,16 @@
 					}
 
 					return next(action);
-				}
-			);
+
+				} // middleware end
+
+			); // store end
 
 			window.WebChat.renderWebChat({
 			  // caso o token nao de, ir a (azure web app bot -> channels -> configure direct line) buscar
 			  directLine: window.WebChat.createDirectLine({ token: 'ASr7rpWWuOM.zGP5-hPcd482Lb1ArV8byWz3G0S7GK1voDzDJSQ7XBU' }),
+			  //directLine: window.WebChat.createDirectLine({ token: 'ASr7rpWWuOM.jAR9duadm5lsI6cO8CYIBjKw2R7DBFgs7-l70RXQXvg' }),
+
 			  //webSpeechPonyfillFactory: window.WebChat.createBrowserWebSpeechPonyfillFactory(),
 			  userID: 'User',
 			  username: 'Lol',
@@ -216,6 +268,7 @@
 		</script>
 	</body>
 </html>
+
 
 
 <!-- https://github.com/microsoft/BotFramework-WebChat/blob/master/samples/ (11) | MIDDLEWARE-->
