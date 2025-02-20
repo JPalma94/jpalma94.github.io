@@ -32,48 +32,30 @@ nav ul li a {
 
 /* Contact Section */
 #contact {
-    background: #fff;
-    padding: 20px;
-    margin: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    margin: 20px auto;
+    max-width: 600px;
+    text-align: left;
+    font-size: 16px;
+    border-top: 1px solid #ddd;
 }
 
 #contact h2 {
-    font-size: 24px;
-    color: #333;
-    margin-bottom: 15px;
-}
-
-.contact-details {
-    font-size: 18px;
+    font-size: 20px;
+    margin-bottom: 10px;
+    font-weight: bold;
 }
 
 .contact-details p {
-    margin-top: 2px; /* Reduced top margin */
-    margin-bottom: 2px; /* Reduced bottom margin */
-    line-height: 1.4; /* Adjusted line height */
-}
-
-.contact-details a {
-    color: #4CAF50;
-    text-decoration: none;
-}
-
-.contact-details a:hover {
-    text-decoration: underline;
+    margin: 3px 0;
+    line-height: 1.4;
 }
 
 /* Footer */
 footer {
-    background: #333;
-    color: #fff;
     text-align: center;
     padding: 10px;
+    font-size: 14px;
+    border-top: 1px solid #ddd;
     margin-top: 30px;
-}
-
-footer p {
-    font-size: 12   px;
-    margin: 0;
 }
