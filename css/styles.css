@@ -50,7 +50,7 @@ nav ul li a {
 }
 
 .contact-details p {
-    margin: 10px 0;
+    margin: 5px 0;
 }
 
 .contact-details a {
@@ -72,6 +72,6 @@ footer {
 }
 
 footer p {
-    font-size: 16px;
+    font-size: 12px;
     margin: 0;
 }
