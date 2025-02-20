@@ -5,21 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Personal Website</title>
     <link rel="stylesheet" href="css/styles.css">
-    <script type="module" src="js/main.js"></script>
+    <script defer src="js/main.js"></script>
 </head>
 <body>
     <header>
         <h1>Welcome</h1>
         <nav>
             <ul>
-                <li><a href="#education">Education</a></li>
-                <li><a href="#experience">Work Experience</a></li>
-                <li><a href="#hobbies">Hobbies</a></li>
+                <li><a href="#" onclick="showSection('education')">Education</a></li>
+                <li><a href="#" onclick="showSection('experience')">Work Experience</a></li>
+                <li><a href="#" onclick="showSection('hobbies')">Hobbies</a></li>
+                <li><a href="#" onclick="showSection('contact')">Contact</a></li>
             </ul>
         </nav>
     </header>
 
-    <section id="contact">
+    <section id="contact" class="content-section">
         <h2>Contact Information</h2>
         <div class="contact-details">
             <p><strong>Email:</strong> <a href="mailto:jdgpalma@gmail.com">jdgpalma@gmail.com</a></p>
@@ -27,8 +28,35 @@
         </div>
     </section>
 
+    <section id="education" class="content-section hidden">
+        <h2>Education</h2>
+        <p>Bachelor’s Degree in Computer Science - University of XYZ</p>
+    </section>
+
+    <section id="experience" class="content-section hidden">
+        <h2>Work Experience</h2>
+        <p>Software Developer at ABC Corp (2020 - Present)</p>
+    </section>
+
+    <section id="hobbies" class="content-section hidden">
+        <h2>Hobbies</h2>
+        <p>Coding, Traveling, Gaming</p>
+    </section>
+
     <footer>
         <p>© 2025 João Palma</p>
     </footer>
+
+    <script>
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.add('hidden');
+            });
+
+            // Show the selected section
+            document.getElementById(sectionId).classList.remove('hidden');
+        }
+    </script>
 </body>
 </html>
