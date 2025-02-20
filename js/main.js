@@ -15,6 +15,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     // Add event listeners to links
+    document.getElementById("home-link").addEventListener("click", function () {
+        showSection("home");
+    });
+
     document.getElementById("edu-link").addEventListener("click", function () {
         showSection("education");
     });
