@@ -1,4 +1,4 @@
-import { isEmpty } from './utils.js';
+//import { isEmpty } from './utils.js';
 
 document.addEventListener("DOMContentLoaded", function () {
     console.log("Welcome to my personal website!");
