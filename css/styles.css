@@ -1,3 +1,15 @@
+/* Hide sections by default */
+.hidden {
+    display: none;
+}
+
+/* Keep layout clean */
+.content-section {
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 600px;
+}
+
 /* Global Styles */
 body {
     font-family: Arial, sans-serif;
