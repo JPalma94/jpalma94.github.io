@@ -49,7 +49,6 @@ nav ul li a {
     max-width: 600px;
     text-align: left;
     font-size: 14px; /* Smaller font */
-    border-top: 1px solid #ddd;
     color: #000; /* Ensure black text */
 }
 
