@@ -43,20 +43,6 @@ nav ul li a {
 }
 
 /* Contact Section */
-#contact {
-    padding: 15px;
-    margin: 20px auto;
-    max-width: 600px;
-    text-align: left;
-    font-size: 14px; /* Smaller font */
-    color: #000; /* Ensure black text */
-}
-
-#contact h2 {
-    font-size: 18px; /* Adjust heading size */
-    margin-bottom: 10px;
-    font-weight: bold;
-}
 
 .contact-details p {
     margin: 3px 0;
