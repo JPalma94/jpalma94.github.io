@@ -41,6 +41,11 @@ nav ul li a {
     max-width: 600px;
 }
 
+.contact-details a {
+    color: #000;
+    text-decoration: none;
+}
+
 .contact-details a:hover {
     text-decoration: underline;
 }
