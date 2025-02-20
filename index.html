@@ -12,10 +12,10 @@
         <h1>Welcome</h1>
         <nav>
             <ul>
-                <li><a href="#" onclick="showSection('education')">Education</a></li>
-                <li><a href="#" onclick="showSection('experience')">Work Experience</a></li>
-                <li><a href="#" onclick="showSection('hobbies')">Hobbies</a></li>
-                <li><a href="#" onclick="showSection('contact')">Contact</a></li>
+                <li><a href="#" id="edu-link">Education</a></li>
+                <li><a href="#" id="exp-link">Work Experience</a></li>
+                <li><a href="#" id="hob-link">Hobbies</a></li>
+                <li><a href="#" id="contact-link">Contact</a></li>
             </ul>
         </nav>
     </header>
@@ -47,16 +47,5 @@
         <p>© 2025 João Palma</p>
     </footer>
 
-    <script>
-        function showSection(sectionId) {
-            // Hide all sections
-            document.querySelectorAll('.content-section').forEach(section => {
-                section.classList.add('hidden');
-            });
-
-            // Show the selected section
-            document.getElementById(sectionId).classList.remove('hidden');
-        }
-    </script>
 </body>
 </html>

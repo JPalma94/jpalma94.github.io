@@ -3,13 +3,6 @@
     display: none;
 }
 
-/* Keep layout clean */
-.content-section {
-    padding: 20px;
-    margin: 20px auto;
-    max-width: 600px;
-}
-
 /* Global Styles */
 body {
     font-family: Arial, sans-serif;
@@ -42,9 +35,16 @@ nav ul li a {
     text-decoration: none;
 }
 
+.content-section {
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 600px;
+}
+
 .contact-details a:hover {
     text-decoration: underline;
 }
+
 
 /* Footer */
 footer {
