@@ -77,6 +77,15 @@ nav ul li a.selected {
     max-width: 600px;
 }
 
+h2 {
+    font-size: 28px;
+}
+
+h3 {
+    font-size: 20px;
+}
+
+
 .contact-details strong {
     font-size: 15px; 
 }
