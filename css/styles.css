@@ -24,12 +24,29 @@ header h1 {
     font-size: 2.0em;
     margin: 0;
     padding: 10px 0;
+    position: relative;
+    z-index: 1;
+}
+
+#logo {
+    width: 7%;
+    opacity: 0.3; 
+    position: absolute; 
+    top: 5px; 
+    left: 50%; 
+    transform: translateX(-50%);
 }
 
 header li {
     font-weight: italic;
 }
 
+#separator {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0));
+    margin: 25px 0 15px 0;
+}
 /* Navigation */
 nav ul {
     list-style: none;
@@ -44,6 +61,15 @@ nav ul li {
 nav ul li a {
     color: #fff;
     text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #ffd700;
+}
+
+nav ul li a.selected {
+    color: #ffd700;
 }
 
 .content-section {
@@ -74,13 +100,15 @@ nav ul li a {
     text-decoration: underline;
 }
 
-img {
-    width: 70%;
+#mainImage {
+    width: 150%;
     border-radius: 10px;
     display: block;
     margin: 0 auto;
+    position: relative;
+    left: -25%;
+    transform: translateX(0);
 }
-
 
 /* Footer */
 footer {
