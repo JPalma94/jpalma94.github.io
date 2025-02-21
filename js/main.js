@@ -27,6 +27,10 @@ document.addEventListener("DOMContentLoaded", function () {
         showSection("experience");
     });
 
+    document.getElementById("certs-link").addEventListener("click", function () {
+        showSection("certifications");
+    });
+
     document.getElementById("hob-link").addEventListener("click", function () {
         showSection("hobbies");
     });
