@@ -26,6 +26,10 @@ header h1 {
     padding: 0px 0;
 }
 
+h2 {
+    font-size: 30px;
+}
+
 #logo {
     width: 4%;
     max-width: 100px;
@@ -77,34 +81,84 @@ nav ul li a.selected {
     max-width: 600px;
 }
 
-h2 {
-    font-size: 28px;
+.education-item {
+    border-left: 3px solid #333;
+    padding-left: 20px;
+    margin-bottom: 30px;
+    position: relative;
+    transition: all 0.3s ease;
 }
 
-h3 {
-    font-size: 20px;
+.education-item:hover {
+    border-left-color: #ffd700;
 }
 
+.education-item h3 {
+    color: #333;
+    margin-bottom: 8px;
+    font-size: 22px;
+}
+
+.education-item p {
+    margin: 5px 0;
+    color: #555;
+}
+
+.education-item strong {
+    color: #222;
+}
+
+.education-item a {
+    font-size: 14px;
+    color: #0066cc;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    display: inline-block;
+    margin-top: 5px;
+}
+
+.education-item a:hover {
+    color: #003d7a;
+    text-decoration: underline;
+}
+
+.education-item .thesis-title {
+    font-style: italic;
+    color: #666;
+    font-size: 13px;
+}
+
+.contact-details {
+    border-left: 3px solid #333;
+    padding-left: 20px;
+    margin-bottom: 30px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.contact-details:hover {
+    border-left-color: #ffd700;
+}
+
+.contact-details p {
+    margin: 5px 0;
+    color: #555;
+}
 
 .contact-details strong {
-    font-size: 15px; 
-}
-
-.contact-details p:first-child {
-    margin-bottom: 0;
-}
-
-.contact-details p:last-child {
-    margin-top: 0;
+    color: #222;
+    font-size: 15px;
 }
 
 .contact-details a {
-    color: #000;
+    color: #222;
     text-decoration: none;
     font-size: 14px;
+    transition: color 0.3s ease;
 }
 
 .contact-details a:hover {
+    color: #000;
     text-decoration: underline;
 }
 
