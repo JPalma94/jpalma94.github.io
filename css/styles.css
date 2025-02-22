@@ -83,16 +83,15 @@ nav ul li a.selected {
 
 .education-item {
     border-left: 3px solid #333;
+    box-sizing: border-box;
     padding-left: 20px;
     margin-bottom: 30px;
     position: relative;
     transition: all 0.3s ease;
-    -webkit-border-left: 3px solid #333; /* Added for Chrome/Safari mobile support */
 }
 
 .education-item:hover {
     border-left-color: #ffd700;
-    -webkit-border-left-color: #ffd700; /* Added for Chrome/Safari mobile support */
 }
 
 .education-item h3 {
@@ -136,12 +135,10 @@ nav ul li a.selected {
     margin-bottom: 30px;
     position: relative;
     transition: all 0.3s ease;
-    -webkit-border-left: 3px solid #333; /* Added for Chrome/Safari mobile support */
 }
 
 .contact-details:hover {
     border-left-color: #ffd700;
-    -webkit-border-left-color: #ffd700; /* Added for Chrome/Safari mobile support */
 }
 
 .contact-details p {
