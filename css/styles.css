@@ -217,6 +217,23 @@ nav ul li a.selected {
     filter: grayscale(0%);
 }
 
+/* Other Section */
+#other {
+    padding-left: 20px;
+    margin-bottom: 30px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+#other p {
+    color: #333;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 15px 0;
+    text-align: right;
+    font-family: 'Roboto', sans-serif;
+}
+
 /* Main Image */
 #mainImage {
     width: 100%;

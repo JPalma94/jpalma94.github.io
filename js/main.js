@@ -31,8 +31,8 @@ document.addEventListener("DOMContentLoaded", function () {
         showSection("certifications");
     });
 
-    document.getElementById("hob-link").addEventListener("click", function () {
-        showSection("hobbies");
+    document.getElementById("other-link").addEventListener("click", function () {
+        showSection("other");
     });
 
     document.getElementById("contact-link").addEventListener("click", function () {
