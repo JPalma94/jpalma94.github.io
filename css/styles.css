@@ -129,6 +129,39 @@ nav ul li a.selected {
     font-size: 13px;
 }
 
+.experience-item {
+    border-left: 3px solid #333;
+    box-sizing: border-box;
+    padding-left: 20px;
+    margin-bottom: 30px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.experience-item:hover {
+    border-left-color: #ffd700;
+}
+
+.experience-item h3 {
+    color: #333;
+    margin-bottom: 8px;
+    font-size: 22px;
+}
+
+.experience-item p {
+    margin: 5px 0;
+    color: #555;
+}
+
+.experience-item strong {
+    color: #222;
+}
+
+.experience-item em {
+    color: #666;
+    font-style: italic;
+}
+
 .contact-details {
     border-left: 3px solid #333;
     box-sizing: border-box;
