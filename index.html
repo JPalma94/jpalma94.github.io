@@ -9,11 +9,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
+    <script>
+        const SALESFORCE_VERIFICATION_URL = 'https://trailhead.salesforce.com/en/credentials/verification/';
+    </script>
 </head>
 <body>
     <header>
-        <img id="logo" src="assets\images\logo.png">
-        <h1>João Palma</h1>
+        <img id="logo" src="assets\images\logo.png" style="cursor: pointer;" onclick="document.getElementById('home-link').click()">
+        <h1 style="cursor: pointer;" onclick="document.getElementById('home-link').click()">João Palma</h1>
         <hr id="separator">
         <nav>
             <ul>
@@ -58,38 +61,38 @@
 
     <section id="experience" class="content-section hidden">
         <h2>Experience</h2>
-        <p>TODO</p>
+        <p><i>Coming soon</i></p>
     </section>
 
     <section id="certifications" class="content-section hidden">
         <h2>Certifications</h2>
         <div class="certs">
             <div>
-                <img id="admin-cert" src="assets\icons\admin-cert.png">
+                <img id="admin-cert" src="assets\icons\admin-cert.png" onclick="window.location.href=SALESFORCE_VERIFICATION_URL">
                 <p>Salesforce Administrator</p>
             </div>
             <div>
-                <img id="appbuilder-cert" src="assets\icons\appbuilder-cert.png">
+                <img id="appbuilder-cert" src="assets\icons\appbuilder-cert.png" onclick="window.location.href=SALESFORCE_VERIFICATION_URL">
                 <p>Salesforce Platform App Builder</p>
             </div>
             <div>
-                <img id="dev1-cert" src="assets\icons\dev1-cert.png">
+                <img id="dev1-cert" src="assets\icons\dev1-cert.png" onclick="window.location.href=SALESFORCE_VERIFICATION_URL">
                 <p>Salesforce Platform Developer I</p>
             </div>
             <div>
-                <img id="sharing-cert" src="assets\icons\sharing-cert.png">
+                <img id="sharing-cert" src="assets\icons\sharing-cert.png" onclick="window.location.href=SALESFORCE_VERIFICATION_URL">
                 <p>Salesforce Sharing and Visibility Architect</p>
             </div>
             <div>
-                <img id="dataarch-cert" src="assets\icons\dataarch-cert.png">
+                <img id="dataarch-cert" src="assets\icons\dataarch-cert.png" onclick="window.location.href=SALESFORCE_VERIFICATION_URL">
                 <p>Salesforce Data Architect</p>
             </div>
             <div>
-                <img id="apparch-cert" src="assets\icons\apparch-cert.png">
+                <img id="apparch-cert" src="assets\icons\apparch-cert.png" onclick="window.location.href=SALESFORCE_VERIFICATION_URL">
                 <p>Salesforce Application Architect</p>
             </div>
             <div>
-                <img id="ai-cert" src="assets\icons\ai-cert.png">
+                <img id="ai-cert" src="assets\icons\ai-cert.png" onclick="window.location.href=SALESFORCE_VERIFICATION_URL">
                 <p>Salesforce AI Associate</p>
             </div>
         </div>
@@ -97,7 +100,7 @@
 
     <section id="hobbies" class="content-section hidden">
         <h2>Hobbies</h2>
-        <p>TODO</p>
+        <p><i>Coming soon</i></p>
     </section>
 
     <section id="contact" class="content-section hidden">
