@@ -1,14 +1,25 @@
-/* Hide sections by default */
-.hidden {
-    display: none;
-}
-
-/* Global Styles */
+/* Base Styles */
 body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
     background: #f4f4f4;
+}
+
+/* Typography */
+h2 {
+    font-size: 30px;
+}
+
+/* Layout */
+.hidden {
+    display: none;
+}
+
+.content-section {
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 600px;
 }
 
 /* Header */
@@ -18,16 +29,17 @@ header {
     padding: 15px;
     text-align: center;
 }
+
 header h1 {
     font-family: 'Cinzel';
     font-weight: 700;
     font-size: 2.1em;
     margin: 0;
-    padding: 0px 0;
+    padding: 0;
 }
 
-h2 {
-    font-size: 30px;
+header li {
+    font-size: larger;
 }
 
 #logo {
@@ -35,20 +47,22 @@ h2 {
     max-width: 100px;
     min-width: 50px;
     opacity: 0.3;
-    margin: 0px auto;
+    margin: 0 auto;
     display: block;
-}
-
-header li {
-    font-size: larger;
 }
 
 #separator {
     border: 0;
     height: 1px;
-    background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0));
-    margin: 15px 0 15px 0;
+    background-image: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0),
+        rgba(255, 255, 255, 0.75),
+        rgba(255, 255, 255, 0)
+    );
+    margin: 15px 0;
 }
+
 /* Navigation */
 nav ul {
     list-style: none;
@@ -67,21 +81,15 @@ nav ul li a {
     transition: color 0.3s ease;
 }
 
-nav ul li a:hover {
-    color: #ffd700;
-}
-
+nav ul li a:hover,
 nav ul li a.selected {
     color: #ffd700;
 }
 
-.content-section {
-    padding: 20px;
-    margin: 20px auto;
-    max-width: 600px;
-}
-
-.education-item {
+/* Common Section Styles */
+.education-item,
+.experience-item,
+.contact-details {
     border-left: 3px solid #333;
     box-sizing: border-box;
     padding-left: 20px;
@@ -90,25 +98,32 @@ nav ul li a.selected {
     transition: all 0.3s ease;
 }
 
-.education-item:hover {
+.education-item:hover,
+.experience-item:hover,
+.contact-details:hover {
     border-left-color: #ffd700;
 }
 
-.education-item h3 {
+.education-item h3,
+.experience-item h3 {
     color: #333;
     margin-bottom: 8px;
     font-size: 22px;
 }
 
-.education-item p {
+.education-item p,
+.experience-item p,
+.contact-details p {
     margin: 5px 0;
     color: #555;
 }
 
-.education-item strong {
+.education-item strong,
+.experience-item strong {
     color: #222;
 }
 
+/* Education Specific */
 .education-item a {
     font-size: 14px;
     color: #0066cc;
@@ -129,57 +144,18 @@ nav ul li a.selected {
     font-size: 13px;
 }
 
-.experience-item {
-    border-left: 3px solid #333;
-    box-sizing: border-box;
-    padding-left: 20px;
-    margin-bottom: 30px;
-    position: relative;
-    transition: all 0.3s ease;
-}
-
-.experience-item:hover {
-    border-left-color: #ffd700;
-}
-
-.experience-item h3 {
-    color: #333;
-    margin-bottom: 8px;
-    font-size: 22px;
-}
-
-.experience-item p {
-    margin: 5px 0;
-    color: #555;
-}
-
-.experience-item strong {
-    color: #222;
-}
-
+/* Experience Specific */
 .experience-item em {
     color: #666;
     font-style: italic;
 }
 
-.contact-details {
-    border-left: 3px solid #333;
-    box-sizing: border-box;
-    padding-left: 20px;
-    margin-bottom: 30px;
-    position: relative;
-    transition: all 0.3s ease;
+.experience-item p {
+    text-align: justify;
+    font-size: 14px;
 }
 
-.contact-details:hover {
-    border-left-color: #ffd700;
-}
-
-.contact-details p {
-    margin: 5px 0;
-    color: #555;
-}
-
+/* Contact Specific */
 .contact-details strong {
     color: #222;
     font-size: 15px;
@@ -197,6 +173,7 @@ nav ul li a.selected {
     text-decoration: underline;
 }
 
+/* Certifications */
 #certifications {
     padding-left: 20px;
     margin-bottom: 30px;
@@ -210,6 +187,12 @@ nav ul li a.selected {
     align-items: flex-start;
     gap: 20px;
     padding: 20px;
+}
+
+.certs div {
+    display: flex;
+    align-items: center;
+    gap: 20px;
 }
 
 .certs p {
@@ -234,12 +217,7 @@ nav ul li a.selected {
     filter: grayscale(0%);
 }
 
-.certs div {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-
+/* Main Image */
 #mainImage {
     width: 100%;
     border-radius: 10px;
