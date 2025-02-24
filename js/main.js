@@ -35,6 +35,10 @@ document.addEventListener("DOMContentLoaded", function () {
         showSection("other");
     });
 
+    document.getElementById("skills-link").addEventListener("click", function () {
+        showSection("skills");
+    });
+
     document.getElementById("contact-link").addEventListener("click", function () {
         showSection("contact");
     });

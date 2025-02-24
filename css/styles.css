@@ -39,6 +39,25 @@ header h1 {
     padding: 0;
 }
 
+header p {
+    font-size: 13px;
+    margin-top: 0;
+    color: #cccccc;
+    margin-bottom: 0;
+}
+
+#starIcon {
+    color: #ffffff;
+    font-size: 1.2em;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 0.3; }
+    50% { opacity: 1; }
+    100% { opacity: 0.3; }
+}
+
 header li {
     font-size: larger;
 }
