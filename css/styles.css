@@ -3,7 +3,8 @@ body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
-    background: #f4f4f4;
+    background: url('../assets/images/background1.jpg');
+    background-size: cover;
 }
 
 /* Typography */
@@ -144,6 +145,10 @@ nav ul li a.selected {
     font-size: 13px;
 }
 
+#thesisURL {
+    color: inherit;
+}
+
 /* Experience Specific */
 .experience-item em {
     color: #666;
@@ -153,6 +158,10 @@ nav ul li a.selected {
 .experience-item p {
     text-align: justify;
     font-size: 14px;
+}
+
+#experienceText {
+    font-size: 13px;
 }
 
 /* Contact Specific */
