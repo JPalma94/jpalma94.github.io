@@ -311,6 +311,9 @@ h4 {
 .lightgrey { background-color: #787878; }
 .lightgrey:hover { background-color: #585858; }
 
+.lightergrey { background-color: #a9a9a9; }
+.lightergrey:hover { background-color: #888888; }
+
 /* Main Image */
 #mainImage {
     width: 100%;
