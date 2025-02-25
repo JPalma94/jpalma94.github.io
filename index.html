@@ -16,10 +16,10 @@
 <body>
     <header>
         <div style="cursor: pointer;" onclick="document.getElementById('home-link').click()">
-            <img id="logo" src="assets\images\logo.png">
             <h1>João Palma</h1>
             <p>- Software Engineer -</p>
-            <p id="subtitleIcon">☣</p>
+            <!--<p id="subtitleIcon">☣</p>-->
+            <img id="logo" src="assets\images\logo.png">
         </div>
         <hr id="separator">
         <nav>
@@ -42,21 +42,21 @@
     <section id="education" class="content-section hidden"> 
         <h2>Education</h2>
         <div class="education-item">
-            <h3>Master's Degree in Computer Engineering</h3>
-            <p><em>Specialization in Software Engineering</em></p>
-            <p><strong>Faculty of Sciences, University of Lisbon</strong> (2017 - 2019)</p>
+            <h3 onclick="window.open('https://ciencias.ulisboa.pt/en', '_blank')">Master's Degree in Computer Engineering</h3>
+            <p onclick="window.open('https://ciencias.ulisboa.pt/en', '_blank')"><em>Specialization in Software Engineering</em></p>
+            <p onclick="window.open('https://ciencias.ulisboa.pt/en', '_blank')"><strong>Faculty of Sciences, University of Lisbon</strong> (2017 - 2019)</p>
             <br>
             <p><strong>Master's Thesis:</strong></p>
             <p class="thesis-title">Mobile Solution - Voice-Assisted Chatbots</p>
             <a id="thesisURL" href="http://hdl.handle.net/10451/40279" target="_blank">View Thesis →</a>
         </div>
         
-        <div class="education-item">
+        <div class="education-item" onclick="window.open('https://ciencias.ulisboa.pt/en', '_blank')">
             <h3>Bachelor's Degree in Computer Engineering</h3>
             <p><strong>Faculty of Sciences, University of Lisbon</strong> (2012 - 2016)</p>
         </div>
 
-        <div class="education-item">
+        <div class="education-item" onclick="window.open('https://www.aevf.pt/', '_blank')">
             <h3>Secondary Education</h3>
             <p><em>Science and Technology Track</em></p>
             <p><strong>Vergílio Ferreira Secondary School</strong> (2010 - 2012)</p>
@@ -65,14 +65,14 @@
 
     <section id="experience" class="content-section hidden">
         <h2>Experience</h2>
-        <div class="experience-item">
+        <div class="experience-item" onclick="window.open('https://www.accenture.com', '_blank')">
             <h3>Accenture</h3>
             <p><em>Global Consulting and Professional Services</em></p>
             <p><strong>Salesforce Developer</strong> (October 2019 to current)</p>
             <p>Working as a consultant for multiple clients:</p>
         </div>
     
-        <div class="experience-item">
+        <div class="experience-item" onclick="window.open('https://www.medtronic.com', '_blank')">
             <h3>Medtronic (Accenture Client)</h3>
             <p><em>Healthcare</em></p>
             <p><strong>Salesforce Developer</strong> (May 2024 to current)</p>
@@ -83,7 +83,7 @@
             Focused on improving operational efficiency and enhancing client support.</p>
         </div>
     
-        <div class="experience-item">
+        <div class="experience-item" onclick="window.open('https://www.edp.com', '_blank')">
             <h3>EDP (Accenture Client)</h3>
             <p><em>Utilities</em></p>
             <p><strong>Salesforce Developer</strong> (December 2019 to May 2024)</p>
@@ -94,7 +94,7 @@
             Built Apex-based integrations using REST and SOAP APIs to facilitate data exchange between Salesforce and external platforms like Heroku, Connect, and Kafka.</p>
         </div>
     
-        <div class="experience-item">
+        <div class="experience-item" onclick="window.open('https://www.flytap.com', '_blank')">
             <h3>TAP (Accenture Client)</h3>
             <p><em>Airlines</em></p>
             <br>
@@ -111,30 +111,37 @@
             <div>
                 <img id="admin-cert" src="assets\icons\admin-cert.png" onclick="window.location.href=SALESFORCE_VERIFICATION_URL">
                 <p>Salesforce Administrator</p>
+                <span>Expert in user management, security, and automation.</span>
             </div>
             <div>
                 <img id="appbuilder-cert" src="assets\icons\appbuilder-cert.png" onclick="window.location.href=SALESFORCE_VERIFICATION_URL">
                 <p>Salesforce Platform App Builder</p>
+                <span>Designs and builds tailored applications with Salesforce platform tools.</span>
             </div>
             <div>
                 <img id="dev1-cert" src="assets\icons\dev1-cert.png" onclick="window.location.href=SALESFORCE_VERIFICATION_URL">
                 <p>Salesforce Platform Developer I</p>
+                <span>Develops Apex, Lightning components, and integrations.</span>
             </div>
             <div>
                 <img id="sharing-cert" src="assets\icons\sharing-cert.png" onclick="window.location.href=SALESFORCE_VERIFICATION_URL">
                 <p>Salesforce Sharing and Visibility Architect</p>
+                <span>Ensures secure data access and scalable sharing models.</span>
             </div>
             <div>
                 <img id="dataarch-cert" src="assets\icons\dataarch-cert.png" onclick="window.location.href=SALESFORCE_VERIFICATION_URL">
                 <p>Salesforce Data Architect</p>
+                <span>Designs efficient, scalable data models and governance.</span>
             </div>
             <div>
                 <img id="apparch-cert" src="assets\icons\apparch-cert.png" onclick="window.location.href=SALESFORCE_VERIFICATION_URL">
                 <p>Salesforce Application Architect</p>
+                <span>Architects scalable solutions using best practices.</span>
             </div>
             <div>
                 <img id="ai-cert" src="assets\icons\ai-cert.png" onclick="window.location.href=SALESFORCE_VERIFICATION_URL">
                 <p>Salesforce AI Associate</p>
+                <span>Leverages AI-powered insights for business solutions.</span>
             </div>
         </div>
     </section>
