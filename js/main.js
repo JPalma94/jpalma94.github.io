@@ -1,44 +1,54 @@
-document.addEventListener("DOMContentLoaded", function () {
-    console.log("Personal Website");
+import { isEmpty } from './utils.js';
 
-    function showSection(sectionId, updateURL = true) {
+document.addEventListener("DOMContentLoaded", function () {
+    console.log("Welcome to my personal website!");
+
+    function showSection(sectionId, sectionName) {
         // Hide all sections
         document.querySelectorAll('.content-section').forEach(section => {
             section.classList.add('hidden');
         });
 
         // Show the selected section
-        const sectionToShow = document.getElementById(sectionId);
-        if (sectionToShow) {
-            sectionToShow.classList.remove('hidden');
-        }
-        
-        // Update URL without reloading the page
-        history.pushState({ section: sectionId }, "", `/${sectionId}`);
-    }
+        document.getElementById(sectionId).classList.remove('hidden');
 
-    // Handle browser Back/Forward navigation
-    window.addEventListener("popstate", function (event) {
-        if (event.state && event.state.section) {
-            showSection(event.state.section, false);
-        } else {
-            showSection("home", false);
-        }
-    });
-
-    // Load the correct section on page load based on the URL
-    const path = window.location.hash.replace("#", ""); 
-    if (path) {
-        showSection(path, false);
-    } else {
-        showSection("home", false);
+        // Update the URL without reloading the page
+        //history.pushState(null, "", `/${sectionName}`);
     }
 
     // Add event listeners to links
-    document.querySelectorAll("nav a").forEach(link => {
-        link.addEventListener("click", function (event) {
-            event.preventDefault(); 
-            showSection(this.id.replace("-link", ""));
-        });
+    document.getElementById("home-link").addEventListener("click", function () {
+        showSection("home", "home");
+    });
+
+    document.getElementById("education-link").addEventListener("click", function () {
+        showSection("education", "education");
+    });
+
+    document.getElementById("experience-link").addEventListener("click", function () {
+        showSection("experience", "experience");
+    });
+
+    document.getElementById("certifications-link").addEventListener("click", function () {
+        showSection("certifications", "certifications");
+    });
+
+    document.getElementById("other-link").addEventListener("click", function () {
+        showSection("other", "other");
+    });
+
+    document.getElementById("skills-link").addEventListener("click", function () {
+        showSection("skills", "skills");
+    });
+
+    document.getElementById("contacts-link").addEventListener("click", function () {
+        showSection("contacts", "contacts");
     });
 });
+
+
+// Example usage:
+/*
+const emptyCheck = isEmpty('  ');
+console.log(emptyCheck);  // Output: true
+*/
